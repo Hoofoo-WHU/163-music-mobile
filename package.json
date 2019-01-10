@@ -21,9 +21,8 @@
   },
   "homepage": "https://github.com/Hoofoo-WHU/163-music-mobile#readme",
   "dependencies": {
-    "cos-js-sdk-v5": "^0.5.7"
+    "cos-js-sdk-v5": "^0.5.7",
+    "vuepress": "^1.0.0-alpha.30"
   },
-  "devDependencies": {
-    "vuepress": "^0.14.8"
-  }
+  "devDependencies": {}
 }
