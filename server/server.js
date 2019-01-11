@@ -23,6 +23,13 @@ app.all('*', function (req, res, next) {
 
 // 格式一：临时密钥接口
 app.post('/sts', function (req, res, next) {
+  // 判断用户信息
+  console.log(req.body)
+  if (req.body.username !== config.username || req.body.password !== config.password) {
+    res.statusCode = 403
+    res.end()
+    return
+  }
   // 获取临时密钥
   const LongBucketName = config.bucket
   const ShortBucketName = LongBucketName.substr(0, LongBucketName.lastIndexOf('-'))

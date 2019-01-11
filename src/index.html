@@ -9,7 +9,11 @@
 </head>
 
 <body>
-    <input id="file-selector" type="file">
+    <form id="uploadForm">
+        <input type="file">
+        <input type="submit" value="上传">
+    </form>
+    <script src="/node_modules/spark-md5/spark-md5.min.js"></script>
     <script src="/node_modules/axios/dist/axios.min.js"></script>
     <script src="/node_modules/cos-js-sdk-v5/dist/cos-js-sdk-v5.min.js"></script>
     <script src="./js/cospromise.js"></script>

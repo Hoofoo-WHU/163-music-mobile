@@ -58,3 +58,15 @@ COS.prototype.getBucketAclPromise = function (option) {
     })
   })
 }
+
+COS.prototype.putObjectPromise = function (option) {
+  return new Promise((resolve, reject) => {
+    this.putObject(option, function (err, data) {
+      if (err) {
+        reject(err)
+      } else {
+        resolve(data)
+      }
+    })
+  })
+}
