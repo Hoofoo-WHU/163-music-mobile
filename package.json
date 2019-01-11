@@ -7,7 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "docs:dev": "vuepress dev docs",
     "docs:build": "vuepress build docs",
-    "server": "http-server -c-1"
+    "start": "http-server -c-1",
+    "server": "node server/server.js"
   },
   "repository": {
     "type": "git",
@@ -21,8 +22,12 @@
   },
   "homepage": "https://github.com/Hoofoo-WHU/163-music-mobile#readme",
   "dependencies": {
+    "axios": "^0.18.0",
     "cos-js-sdk-v5": "^0.5.7",
     "vuepress": "^1.0.0-alpha.30"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "express": "^4.16.4",
+    "qcloud-cos-sts": "^2.0.7"
+  }
 }
