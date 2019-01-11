@@ -26,23 +26,25 @@ let cos = new COS({
   getAuthorization: getAuthorizationFunction({ username: 'admin', password: 'wangshuo521' })
 })
 
-document.querySelector('#uploadForm').addEventListener('submit', async function (e) {
+document.querySelector('#uploadForm').addEventListener('submit', function (e) {
   e.preventDefault()
-  let file = this.querySelector('input[type="file"]').files[0]
-  let md5 = await getFileMD5(file)
-  cos.putObjectPromise({
-    Bucket: bucket,
-    Region: region,
-    Key: `${prefix}${file.name}`,
-    Body: file,
-    onProgress: function (progressData) {
-      console.dir(progressData);
-    }
-  }).then(data => {
-    // 校验md5
-    if (md5 === JSON.parse(data.ETag)) {
-      console.log(`上传成功，地址为:${data.Location}`)
-    }
+  let files = this.querySelector('input[type="file"]').files
+  void [].forEach.call(files, async file => {
+    let md5 = await getFileMD5(file)
+    cos.putObjectPromise({
+      Bucket: bucket,
+      Region: region,
+      Key: `${prefix}${file.name}`,
+      Body: file,
+      onProgress: function (progressData) {
+        console.dir(progressData);
+      }
+    }).then(data => {
+      // 校验md5
+      if (md5 === JSON.parse(data.ETag)) {
+        console.log(`上传成功，地址为:${data.Location}`)
+      }
+    })
   })
 })
 
@@ -56,3 +58,30 @@ function getFileMD5(file) {
     fileReader.readAsArrayBuffer(file)
   })
 }
+
+let musicListElement = document.querySelector('#musicList')
+
+~async function () {
+  try {
+    let data = await cos.getBucketPromise({
+      Bucket: bucket,
+      Region: region,
+      Prefix: prefix,
+      Delimiter: '/'
+    })
+    data.Contents.filter(val => val.Key !== prefix).forEach(async val => {
+      let res = await cos.getObjectUrlPromise({
+        Bucket: bucket,
+        Region: region,
+        Key: val.Key,
+        Sign: false
+      })
+      val.Url = res.Url
+      let li = document.createElement('li')
+      li.innerText = JSON.stringify(val)
+      musicListElement.querySelector('ol').appendChild(li)
+    })
+  } catch (e) {
+    console.error('获取音乐列表失败', e)
+  }
+}()

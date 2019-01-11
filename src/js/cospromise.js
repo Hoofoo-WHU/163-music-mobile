@@ -70,3 +70,15 @@ COS.prototype.putObjectPromise = function (option) {
     })
   })
 }
+
+COS.prototype.getObjectUrlPromise = function (option) {
+  return new Promise((resolve, reject) => {
+    this.getObjectUrl(option, function (err, data) {
+      if (err) {
+        reject(err)
+      } else {
+        resolve(data)
+      }
+    })
+  })
+}

@@ -1,0 +1,44 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box
+}
+
+*::before {
+  box-sizing: border-box;
+}
+
+*::after {
+  box-sizing: border-box;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+body {
+  font-size: 14px;
+}
+
+/* layout */
+
+.app {
+  display: flex;
+  flex-direction: row;
+  height: 100vh;
+}
+
+.app aside {
+  border: 1px solid red;
+  width: 300px;
+}
+
+.app main {
+  flex-grow: 1;
+  border: 1px solid green;
+}
