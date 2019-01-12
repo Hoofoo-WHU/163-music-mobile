@@ -7,6 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="./css/style.css">
   <link rel="stylesheet" href="./css/aside.css">
+  <link rel="stylesheet" href="./css/upload.css">
   <link rel="stylesheet" href="./css/music-list.css">
   <title>Document</title>
 </head>
@@ -69,8 +70,8 @@
                 <td>
                   <div class="actions">
                     <a>下载</a>
-                    <a>删除</a>
                     <a>详情</a>
+                    <a>删除</a>
                   </div>
                 </td>
               </tr>
@@ -79,13 +80,48 @@
         </main>
       </section>
     </main>
-    </>
-    <script src="//at.alicdn.com/t/font_1012551_tzm1oeme52.js"></script>
-    <script src="/node_modules/spark-md5/spark-md5.min.js"></script>
-    <script src="/node_modules/axios/dist/axios.min.js"></script>
-    <script src="/node_modules/cos-js-sdk-v5/dist/cos-js-sdk-v5.min.js"></script>
-    <script src="./js/cospromise.js"></script>
-    <!-- <script src="./js/cloud.js"></script> -->
+    <div class="modal active">
+      <div class="content">
+        <div class="uploadmusic">
+          <header>
+            <h1>上传音乐</h1>
+            <svg class="icon close" aria-hidden="true">
+              <use xlink:href="#icon-close"></use>
+            </svg>
+          </header>
+          <main>
+            <table>
+              <thead>
+                <tr>
+                  <th>音乐标题</th>
+                  <th>歌手</th>
+                  <th>格式</th>
+                  <th>大小</th>
+                  <th>操作</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <div class="uploadarea">
+              <b>点击或拖拽文件到此区域上传</b>
+              <span>单个文件最大支持50MB,支持选择多个文件</span>
+            </div>
+          </main>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="//at.alicdn.com/t/font_1012551_piadd1tc3u.js"></script>
+  <script src="/node_modules/spark-md5/spark-md5.min.js"></script>
+  <script src="/node_modules/axios/dist/axios.min.js"></script>
+  <script src="/node_modules/cos-js-sdk-v5/dist/cos-js-sdk-v5.min.js"></script>
+  <script src="./js/cospromise.js"></script>
+  <!-- <script src="./js/cloud.js"></script> -->
 </body>
 
 </html>

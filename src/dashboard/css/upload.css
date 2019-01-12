@@ -1,0 +1,87 @@
+.app .modal {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #0008;
+  justify-content: center;
+  align-items: center;
+  display: none;
+  transition: all .6s;
+  overflow-y: scroll;
+}
+
+.app .modal.active {
+  display: flex;
+}
+
+.app .modal .content {
+  background-color: white;
+  border-radius: 5px;
+}
+
+.app .modal .uploadmusic {
+  display: flex;
+  flex-direction: column;
+  padding: 30px;
+}
+
+.app .modal .uploadmusic header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.app .modal .uploadmusic header h1 {
+  font-size: 1.2em;
+  font-weight: 400;
+}
+
+.app .modal .uploadmusic header .close {
+  width: 1.2em;
+  height: 1.2em;
+  fill: #333;
+  transition: all .3s;
+  cursor: pointer;
+}
+
+.app .modal .uploadmusic header .close:hover {
+  transform: rotate(90deg)
+}
+
+.app .modal .uploadmusic main {
+  margin-top: 30px;
+  flex-grow: 1;
+}
+
+.app .modal .uploadmusic main table {
+  text-align: left;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+  border: 1px solid #ddd;
+  border-bottom: none;
+  line-height: 20px;
+  padding: 10px;
+  width: 600px;
+}
+
+.app .modal .uploadmusic main .uploadarea {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  width: 600px;
+  height: 260px;
+  border: 1px dashed #ccc;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  user-select: none;
+  -webkit-user-select: none;
+  cursor: pointer;
+}
+
+.app .modal .uploadmusic main .uploadarea span {
+  color: #ccc;
+}
