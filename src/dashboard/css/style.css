@@ -21,6 +21,10 @@ a {
   color: inherit;
 }
 
+button {
+  outline: none;
+}
+
 body {
   font-size: 14px;
   line-height: 1.5em;
@@ -68,8 +72,12 @@ th, td {
 
 .app>main>section {
   padding: 30px 50px 0 50px;
-  display: flex;
+  display: none;
   flex-direction: column;
+}
+
+.app>main>section.active {
+  display: flex;
 }
 
 .app>main>section>header {

@@ -1,6 +1,6 @@
 #musicList header .actions button {
   border: none;
-  transition: all .3s;
+  transition: background-color .3s, color .3s;
   padding: 13px 24px;
   border-radius: 3px;
   border: 1px solid #df2317;
@@ -10,7 +10,7 @@
 }
 
 #musicList header .actions button:hover {
-  background: #e4463a;
+  background: #df2317;
   color: white;
 }
 

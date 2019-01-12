@@ -8,9 +8,8 @@
   bottom: 0;
   background: #0008;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   display: none;
-  transition: all .6s;
   overflow-y: scroll;
 }
 
@@ -19,6 +18,7 @@
 }
 
 .app .modal .content {
+  margin-top: 50px;
   background-color: white;
   border-radius: 5px;
 }
@@ -40,8 +40,9 @@
 }
 
 .app .modal .uploadmusic header .close {
-  width: 1.2em;
-  height: 1.2em;
+  vertical-align: top;
+  width: 1em;
+  height: 1em;
   fill: #333;
   transition: all .3s;
   cursor: pointer;
@@ -52,36 +53,114 @@
 }
 
 .app .modal .uploadmusic main {
+  display: flex;
+  flex-direction: column;
   margin-top: 30px;
+  height: 400px;
   flex-grow: 1;
+}
+
+.app .modal .uploadmusic .tablewrapper {
+  flex-grow: 1;
+  border: 1px solid #eee;
+  border-radius: 3px;
+  width: 600px;
+  overflow-y: scroll;
+}
+
+.app .modal .uploadmusic.empty .tablewrapper {
+  flex-grow: unset;
+  border-bottom: none;
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 0px;
 }
 
 .app .modal .uploadmusic main table {
   text-align: left;
-  border-top-right-radius: 5px;
-  border-top-left-radius: 5px;
-  border: 1px solid #ddd;
-  border-bottom: none;
-  line-height: 20px;
-  padding: 10px;
-  width: 600px;
+  border-collapse: collapse;
+  width: 100%;
 }
 
-.app .modal .uploadmusic main .uploadarea {
+.app .modal .uploadmusic main table .actions a {
+  padding: 0 5px;
+  transition: color .3s;
+  cursor: pointer;
+  color: #df2317;
+}
+
+.app .modal .uploadmusic main table .actions a:hover {
+  color: #df2417b9;
+}
+
+.app .modal .uploadmusic table th {
+  border-bottom: 1px solid #eee;
+  padding: 10px;
+}
+
+.app .modal .uploadmusic.empty table th {
+  border-bottom: none;
+  padding: 10px;
+}
+
+.app .modal .uploadmusic table td {
+  transition: background-color .3s;
+  padding: 10px;
+  font-weight: 400;
+  font-size: 12px;
+  border-bottom: 1px solid #eee;
+}
+
+.app .modal .uploadmusic table tr:hover td {
+  background-color: #00000008;
+}
+
+.app .modal .uploadmusic table tr:last-child td {
+  border-bottom: none;
+}
+
+.app .modal .uploadmusic.empty .uploadarea {
+  flex-grow: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
   text-align: center;
   width: 600px;
-  height: 260px;
-  border: 1px dashed #ccc;
-  border-bottom-left-radius: 5px;
-  border-bottom-right-radius: 5px;
+  border: 1px dashed #ddd;
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
   user-select: none;
   -webkit-user-select: none;
   cursor: pointer;
 }
 
+.app .modal .uploadmusic .uploadarea {
+  display: none;
+}
+
 .app .modal .uploadmusic main .uploadarea span {
   color: #ccc;
+}
+
+.app .modal .uploadmusic footer {
+  display: flex;
+  flex-shrink: 0;
+  flex-direction: row-reverse;
+  margin-top: 20px;
+}
+
+.app .modal .uploadmusic footer button {
+  font-size: 14px;
+  border: none;
+  transition: background-color .3s, color .3s;
+  padding: 10px 20px;
+  border-radius: 3px;
+  border: 1px solid #df2317;
+  background-color: transparent;
+  color: #df2317;
+  cursor: pointer;
+}
+
+.app .modal .uploadmusic footer button:hover {
+  background: #df2317;
+  color: white;
 }
