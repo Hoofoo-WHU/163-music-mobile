@@ -1,0 +1,58 @@
+#musicList header .actions button {
+  border: none;
+  transition: all .3s;
+  padding: 13px 24px;
+  border-radius: 3px;
+  border: 1px solid #df2317;
+  background-color: transparent;
+  color: #df2317;
+  cursor: pointer;
+}
+
+#musicList header .actions button:hover {
+  background: #e4463a;
+  color: white;
+}
+
+#musicList table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  margin-bottom: 50px;
+}
+
+#musicList table th {
+  padding: 16px 10px;
+  color: #aaa;
+  font-weight: 400;
+}
+
+#musicList table tr:first-child td {
+  border-top: 1px solid #eee;
+}
+
+#musicList table td {
+  transition: background-color .3s;
+  border-bottom: 1px solid #eee;
+  padding: 20px 10px;
+  background-color: #fff;
+}
+
+#musicList table tr:hover td {
+  background-color: #00000008;
+}
+
+#musicList table .actions {
+  cursor: default;
+}
+
+#musicList table .actions a {
+  padding: 0 5px;
+  transition: color .3s;
+  cursor: pointer;
+  color: #df2317;
+}
+
+#musicList table .actions a:hover {
+  color: #df2417b9;
+}

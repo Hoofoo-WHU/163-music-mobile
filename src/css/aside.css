@@ -1,0 +1,80 @@
+.app>aside {
+  border-right: 1px solid #e6e6e6;
+  background-color: #f5f5f5;
+  width: 240px;
+}
+
+.app>aside>header {
+  padding: 30px 0;
+}
+
+.app>aside>header .logo {
+  width: 60px;
+  height: 60px;
+  fill: #df2317;
+  overflow: hidden;
+}
+
+.app>aside>header span {
+  margin-top: 10px;
+}
+
+.app>aside>main li {
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+  display: flex;
+  align-items: center;
+  padding: 12px 16px;
+}
+
+.app>aside>main li>.list-icon {
+  transition: fill .3s;
+  margin-right: 8px;
+  vertical-align: middle;
+  fill: #999;
+  width: 1.2em;
+  height: 1.2em;
+}
+
+.app>aside>main li:hover>.list-icon {
+  fill: #333;
+}
+
+.app>aside>main li.active>.list-icon {
+  fill: #333;
+}
+
+.app>aside>main li.active {
+  background-color: #00000008;
+  border-right: 2px solid #df2317;
+}
+
+.app>aside>footer {
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  user-select: none;
+  -webkit-user-select: none;
+  align-items: center;
+  cursor: pointer;
+  color: #999;
+  transition: color .3s;
+}
+
+.app>aside>footer .icon {
+  vertical-align: top;
+  margin-left: 8px;
+  width: 1.2em;
+  height: 1.2em;
+  fill: #999;
+  transition: fill .3s;
+}
+
+.app>aside>footer:hover {
+  color: #222;
+}
+
+.app>aside>footer:hover .icon {
+  fill: #333;
+}
