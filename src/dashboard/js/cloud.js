@@ -1,6 +1,7 @@
 {
   const eventBus = window.app.eventBus
   const utils = window.utils
+  const http = window.app.http
   let cos = {
     init() {
       this.bucket = '163-music-mobile-1256107964'
@@ -24,6 +25,9 @@
           }
         }).then(data => {
           if (md5 === JSON.parse(data.ETag)) {
+            song.url = data.Location
+            console.log(http)
+            http.addSong(song)
             console.log(`上传成功，地址为:${data.Location}`)
           }
           console.log('上传成功')
