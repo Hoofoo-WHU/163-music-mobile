@@ -30,6 +30,9 @@
       this.el.on('click', '.actions .uploadMusic', () => {
         eventBus.emit('showupload')
       })
+      eventBus.on('musiclist.add', (song) => {
+        this.controller.addSong(song)
+      })
       eventBus.on('musiclist.show', () => {
         this.show()
       })
@@ -60,10 +63,13 @@
   let model = {
     musiclist: {
       set(musiclist) {
-        this.musiclist = musiclist
+        this.musiclist = new Set(musiclist)
       },
       get() {
         return this.musiclist
+      },
+      add(song) {
+        this.musiclist.add(song)
       }
     }
   }
@@ -76,6 +82,11 @@
     async getMusicList() {
       let musiclist = await http.getMusicList()
       this.model.musiclist.set(musiclist)
+      this.view.renderMusicList(this.model.musiclist.get())
+    },
+    addSong(song) {
+      this.model.musiclist.add(song)
+      console.log(this.model.musiclist.get())
       this.view.renderMusicList(this.model.musiclist.get())
     }
   }

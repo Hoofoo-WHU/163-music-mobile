@@ -1,4 +1,5 @@
 {
+  let eventBus = window.app.eventBus
   let sessionToken = sessionStorage.getItem('dash_session')
   const axios = window.axios.create({
     baseURL: 'https://rs2cp2z7.api.lncld.net/1.1/',
@@ -29,6 +30,7 @@
       headers: { 'X-LC-Session': sessionToken },
       data: { name, singer, type, size, url, md5 }
     })
+    eventBus.emit('musiclist.add', { name, singer, type, size, url, md5, objectId: result.data.objectId })
   }
   if (!sessionToken) {
     login()
