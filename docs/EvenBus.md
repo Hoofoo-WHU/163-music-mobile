@@ -12,3 +12,4 @@ uploadmusic: 上传音乐 （musiclist）
 
 musiclist.add 列表添加音乐 （song）
 
+musiclist.remove 删除音乐  (song)
