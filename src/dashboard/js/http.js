@@ -32,11 +32,20 @@
     })
     eventBus.emit('musiclist.add', { name, singer, type, size, url, md5, objectId: result.data.objectId })
   }
+  let removeSong = async function (song) {
+    let result = await axios({
+      method: 'delete',
+      url: `classes/Songs/${song.objectId}`,
+      headers: { 'X-LC-Session': sessionToken },
+    })
+    eventBus.emit('musiclist.remove', song)
+  }
   if (!sessionToken) {
     login()
   }
   window.app.http = {
     getMusicList,
-    addSong
+    addSong,
+    removeSong
   }
 }

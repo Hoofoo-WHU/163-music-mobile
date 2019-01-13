@@ -11,3 +11,4 @@ uploadmusic: 上传音乐 （musiclist）
 `downloadmusic`下载音乐 名称
 
 musiclist.add 列表添加音乐 （song）
+

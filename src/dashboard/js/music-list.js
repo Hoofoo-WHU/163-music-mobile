@@ -39,6 +39,9 @@
       eventBus.on('musiclist.hide', () => {
         this.hide()
       })
+      eventBus.on('musiclist.remove', (song) => {
+        this.controller.removeSong(song)
+      })
     },
     show() {
       this.el.addClass('active')
@@ -52,9 +55,12 @@
       musiclist.forEach(song => {
         let $row = this.tempate.songRow(song)
         let $a = $('<a href="javascript:;">下载</a>').on('click', () => {
-          eventBus.emit('downloadmusic', `${song.md5}.${song.type}`)
+          this.controller.download(song)
         })
-        $row.find('.actions').append($a)
+        let $d = $('<a href="javascript:;">删除</a>').on('click', () => {
+          this.controller.remove(song)
+        })
+        $row.find('.actions').append($a, $d)
         tbody.append($row)
       })
     }
@@ -70,6 +76,9 @@
       },
       add(song) {
         this.musiclist.add(song)
+      },
+      remove(song) {
+        this.musiclist.delete(song)
       }
     }
   }
@@ -84,10 +93,19 @@
       this.model.musiclist.set(musiclist)
       this.view.renderMusicList(this.model.musiclist.get())
     },
+    download(song) {
+      eventBus.emit('downloadmusic', `${song.md5}.${song.type}`)
+    },
     addSong(song) {
       this.model.musiclist.add(song)
-      console.log(this.model.musiclist.get())
       this.view.renderMusicList(this.model.musiclist.get())
+    },
+    removeSong(song) {
+      this.model.musiclist.remove(song)
+      this.view.renderMusicList(this.model.musiclist.get())
+    },
+    remove(song) {
+      http.removeSong(song)
     }
   }
   view.init(controller, model)
