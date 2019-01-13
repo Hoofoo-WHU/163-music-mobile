@@ -9,7 +9,7 @@
   function Song(file) {
     let matches = file.name.match(/^(.+)\.(\w+)$/)
     this.type = matches[2]
-    let namemach = matches[1] && matches[1].split('-', 2)
+    let namemach = matches[1] && matches[1].split(/\s*-\s*/, 2)
     this.name = namemach[1] || namemach[0]
     this.singer = namemach[0]
     this.size = formatFileSize(file.size)

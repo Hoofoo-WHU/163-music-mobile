@@ -25,10 +25,10 @@
           }
         }).then(data => {
           if (md5 === JSON.parse(data.ETag)) {
+            song.md5 = md5
             song.url = data.Location
             console.log(http)
             http.addSong(song)
-            console.log(`上传成功，地址为:${data.Location}`)
           }
           console.log('上传成功')
         }).catch(e => {
@@ -57,9 +57,22 @@
       }
       return getAuthorization
     },
+    async download(key) {
+      let data = await this.cos.getObjectUrlPromise({
+        Bucket: this.bucket,
+        Region: this.region,
+        Key: this.prefix + key,
+        Sign: true
+      })
+      downloadUrl = data.Url + (data.Url.indexOf('?') > -1 ? '&' : '?') + 'response-content-disposition=attachment'
+      window.open(downloadUrl)
+    },
     bindEvent() {
       eventBus.on('uploadmusic', (musiclist) => {
         this.uploadMusic(musiclist)
+      })
+      eventBus.on('downloadmusic', (name) => {
+        this.download(name)
       })
     }
   }

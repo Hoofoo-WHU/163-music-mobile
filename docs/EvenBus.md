@@ -7,3 +7,5 @@ uploadmusic: 上传音乐 （musiclist）
 `musiclist.show`显示musiclist页面hide同理
 
 `usermanage.show`显示用户管理页面 hide同理
+
+`downloadmusic`下载音乐 名称

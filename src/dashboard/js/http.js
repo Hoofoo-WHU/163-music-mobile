@@ -22,14 +22,13 @@
     let result = await axios.get('classes/Songs')
     return result.data.results
   }
-  let addSong = async function ({ name, singer, type, size, url }) {
+  let addSong = async function ({ name, singer, type, size, url, md5 }) {
     let result = await axios({
       url: 'classes/Songs',
       method: 'post',
       headers: { 'X-LC-Session': sessionToken },
-      data: { name, singer, type, size, url }
+      data: { name, singer, type, size, url, md5 }
     })
-    console.log(result)
   }
   if (!sessionToken) {
     login()
