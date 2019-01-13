@@ -1,7 +1,7 @@
 {
   const eventBus = window.app.eventBus
   const utils = window.utils
-  let http = {
+  let cos = {
     init() {
       this.bucket = '163-music-mobile-1256107964'
       this.region = 'ap-beijing'
@@ -59,7 +59,7 @@
       })
     }
   }
-  http.init()
+  cos.init()
 }
 
     // let musicListElement = document.querySelector('#musicList')

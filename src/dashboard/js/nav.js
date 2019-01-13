@@ -6,7 +6,6 @@
       this.controller = controller
       controller.init(this, model)
       this.current = this.el.find('li.active')
-      console.log(this.current)
       this.bindEvent()
     },
     bindEvent() {
