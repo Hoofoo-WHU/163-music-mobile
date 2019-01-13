@@ -1,20 +1,17 @@
 {
   let eventBus = window.app.eventBus
   let view = {
+    el: $('#userManage'),
     init(controller, model) {
       this.controller = controller
       this.controller.init(this, model)
       this.bindEvent()
     },
-    el: $('#musicList'),
     bindEvent() {
-      this.el.on('click', '.actions .uploadMusic', () => {
-        eventBus.emit('showupload')
-      })
-      eventBus.on('musiclist.show', () => {
+      eventBus.on('usermanage.show', () => {
         this.show()
       })
-      eventBus.on('musiclist.hide', () => {
+      eventBus.on('usermanage.hide', () => {
         this.hide()
       })
     },
@@ -26,14 +23,12 @@
     }
   }
   let model = {
-    uploadMusic() {
 
-    }
   }
   let controller = {
     init(view, model) {
-      this.model = model
       this.view = view
+      this.model = model
     }
   }
   view.init(controller, model)

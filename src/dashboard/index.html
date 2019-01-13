@@ -22,20 +22,22 @@
         <span>Music Mobile</span>
       </header>
       <main>
-        <ol>
-          <li class="active">
-            <svg class="list-icon" aria-hidden="true">
-              <use xlink:href="#icon-music-list"></use>
-            </svg>
-            <span>音乐管理</span>
-          </li>
-          <li>
-            <svg class="list-icon" aria-hidden="true">
-              <use xlink:href="#icon-user"></use>
-            </svg>
-            <span>用户管理</span>
-          </li>
-        </ol>
+        <nav>
+          <ol>
+            <li class="active" for="musicList">
+              <svg class="list-icon" aria-hidden="true">
+                <use xlink:href="#icon-music-list"></use>
+              </svg>
+              <span>音乐管理</span>
+            </li>
+            <li for="userManage">
+              <svg class="list-icon" aria-hidden="true">
+                <use xlink:href="#icon-user"></use>
+              </svg>
+              <span>用户管理</span>
+            </li>
+          </ol>
+        </nav>
       </main>
       <footer>
         <span>注销登录</span>
@@ -79,7 +81,7 @@
           </table>
         </main>
       </section>
-      <section id="user">
+      <section id="userManage">
         <header>
           <h1>用户管理</h1>
         </header>
@@ -132,8 +134,10 @@
   <script src="./js/utils.js"></script>
   <script src="./js/eventBus.js"></script>
   <script src="./js/cloud.js"></script>
+  <script src="./js/nav.js"></script>
   <script src="./js/upload.js"></script>
   <script src="./js/music-list.js"></script>
+  <script src="./js/user-manage.js"></script>
 </body>
 
 </html>

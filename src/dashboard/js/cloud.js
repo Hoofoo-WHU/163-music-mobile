@@ -31,10 +31,6 @@
           console.log(e)
         })
       })
-    }, bindEvent() {
-      eventBus.on('uploadmusic', (musiclist) => {
-        this.uploadMusic(musiclist)
-      })
     },
     getAuthorizationFunction({ username, password }) {
       async function getAuthorization(options, callback) {
@@ -56,10 +52,14 @@
         }
       }
       return getAuthorization
+    },
+    bindEvent() {
+      eventBus.on('uploadmusic', (musiclist) => {
+        this.uploadMusic(musiclist)
+      })
     }
   }
   http.init()
-  window.cos = http.cos
 }
 
     // let musicListElement = document.querySelector('#musicList')
