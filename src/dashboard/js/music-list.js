@@ -3,6 +3,7 @@
   let http = window.app.http
   let view = {
     init(controller, model) {
+      this.scrollTop = 0
       this.controller = controller
       this.controller.init(this, model)
       this.controller.getMusicList()
@@ -45,8 +46,10 @@
     },
     show() {
       this.el.addClass('active')
+      this.el.parent().scrollTop(this.scrollTop)
     },
     hide() {
+      this.scrollTop = this.el.parent().scrollTop()
       this.el.removeClass('active')
     },
     renderMusicList(musiclist) {
