@@ -160,6 +160,18 @@
   cursor: pointer;
 }
 
+.app .modal .uploadmusic footer button:disabled {
+  border: 1px solid #eee;
+  background-color: transparent;
+  color: #eee;
+  cursor: not-allowed;
+}
+
+.app .modal .uploadmusic footer button:disabled:hover {
+  color: #eee;
+  background-color: transparent;
+}
+
 .app .modal .uploadmusic footer button:hover {
   background: #df2317;
   color: white;

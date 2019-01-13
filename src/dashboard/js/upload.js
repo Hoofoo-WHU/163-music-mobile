@@ -28,14 +28,15 @@
     },
     empty() {
       this.el.find('.uploadmusic').addClass('empty')
+      this.el.find('footer button[name="upload"]').attr('disabled', 'true')
       this.el.find('tbody').html('')
     },
     unempty() {
+      this.el.find('footer button[name="upload"]').removeAttr('disabled')
       this.el.find('.uploadmusic').removeClass('empty')
     },
     renderSonglist(songlist) {
       this.empty()
-      console.log(songlist)
       let $tbody = this.el.find('tbody')
       if (songlist && songlist.size) {
         this.unempty()
@@ -63,11 +64,14 @@
       this.el.find('.content').on('click', '.uploadarea', () => {
         this.controller.selectFiles()
       })
-      this.el.find('.uploadarea').on('drop', (e) => {
+      this.el.find('.content').on('drop', '.uploadarea', (e) => {
         e.preventDefault()
         e.stopPropagation()
         this.controller.setFiles(e.originalEvent.dataTransfer.files)
       }).on('dragover', false)
+      this.el.find('.content').on('click', 'footer button[name="upload"]', () => {
+        this.controller.uploadmusic()
+      })
       eventBus.on('showupload', () => {
         this.show()
       })
@@ -104,7 +108,6 @@
       this.view.renderSonglist(this.model.songlist.get())
     },
     remove(song) {
-      console.log(song)
       this.model.songlist.remove(song)
       this.view.renderSonglist(this.model.songlist.get())
     },
@@ -122,6 +125,10 @@
       files = [].filter.call(files, val => val.type.search('audio') !== -1)
       this.model.songlist.set(utils.toSonglist(files))
       this.view.renderSonglist(this.model.songlist.get())
+    },
+    uploadmusic() {
+      eventBus.emit('uploadmusic', this.model.songlist.get())
+      this.view.hide()
     }
   }
 

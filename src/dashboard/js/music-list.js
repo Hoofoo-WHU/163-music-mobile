@@ -14,8 +14,8 @@
     }
   }
   let model = {
-    upload(xxx) {
-      console.log(xxx)
+    uploadMusic() {
+
     }
   }
   let controller = {

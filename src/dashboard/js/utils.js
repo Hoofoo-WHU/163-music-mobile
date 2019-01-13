@@ -1,4 +1,4 @@
-{
+~function () {
   function formatFileSize(fileSize, idx = 0) {
     const units = ["B", "KB", "MB", "GB"]
     if (fileSize < 1024 || idx === units.length - 1) {
@@ -18,8 +18,19 @@
   function toSonglist(filelist) {
     return new Set([].map.call(filelist, file => new Song(file)))
   }
+  function getFileMD5(file) {
+    return new Promise((resolve, reject) => {
+      let fileReader = new FileReader()
+      fileReader.addEventListener('loadend', function (e) {
+        let result = e.target.result
+        resolve(SparkMD5.ArrayBuffer.hash(result))
+      })
+      fileReader.readAsArrayBuffer(file)
+    })
+  }
   window.utils = {
     toSonglist,
-    formatFileSize
+    formatFileSize,
+    getFileMD5
   }
-}
+}()
