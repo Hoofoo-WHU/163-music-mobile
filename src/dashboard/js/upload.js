@@ -63,6 +63,11 @@
       this.el.find('.content').on('click', '.uploadarea', () => {
         this.controller.selectFiles()
       })
+      this.el.find('.uploadarea').on('drop', (e) => {
+        e.preventDefault()
+        e.stopPropagation()
+        this.controller.setFiles(e.originalEvent.dataTransfer.files)
+      }).on('dragover', false)
       eventBus.on('showupload', () => {
         this.show()
       })
@@ -106,10 +111,17 @@
     selectFiles() {
       let $input = $('<input type="file" multiple accept="audio/*">')
       $input.on("change", (e) => {
-        this.model.songlist.set(utils.toSonglist(e.target.files))
-        this.view.renderSonglist(this.model.songlist.get())
+        this.setFiles(e.target.files)
       })
       $input.click()
+    },
+    setFiles(files) {
+      if ([].some.call(files, val => val.type.search('audio') === -1)) {
+        alert('不支持上传非音乐格式')
+      }
+      files = [].filter.call(files, val => val.type.search('audio') !== -1)
+      this.model.songlist.set(utils.toSonglist(files))
+      this.view.renderSonglist(this.model.songlist.get())
     }
   }
 
