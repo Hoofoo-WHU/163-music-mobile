@@ -31,6 +31,7 @@ body {
   background-color: #fcfcfd;
   color: #333;
   font: 14px/1.5 Helvetica, sans-serif;
+  overflow-x: hidden;
 }
 
 .noselect {
@@ -109,7 +110,7 @@ body {
   z-index: 1;
 }
 
-#app>nav::before {
+.boder-bottom-1px::before {
   content: '';
   position: absolute;
   top: 0;
@@ -121,7 +122,7 @@ body {
 }
 
 @media screen and (min-resolution: 1.5dppx), screen and (-webkit-min-device-pixel-ratio: 2.0) {
-  #app>nav::before {
+  .boder-bottom-1px::before {
     width: 150%;
     height: 150%;
     transform: scale(0.6666666666666);
@@ -129,7 +130,7 @@ body {
 }
 
 @media screen and (min-resolution: 2dppx), screen and (-webkit-min-device-pixel-ratio: 2.0) {
-  #app>nav::before {
+  .boder-bottom-1px::before {
     width: 200%;
     height: 200%;
     transform: scale(0.5);

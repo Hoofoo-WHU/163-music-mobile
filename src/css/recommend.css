@@ -51,3 +51,57 @@
   font-size: 13px;
   line-height: 1.2;
 }
+
+#recommend>.new-songs>main .song {
+  position: relative;
+  display: flex;
+  margin-left: 10px;
+}
+
+#recommend>.new-songs>main .song>.info {
+  flex-grow: 1;
+  padding: 6px 0;
+  min-width: 0;
+}
+
+.line-clamp-1 {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  word-break: normal;
+}
+
+#recommend>.new-songs>main .song>.info h2 {
+  font-size: 17px;
+}
+
+#recommend>.new-songs>main .song>.info p {
+  color: #888;
+  font-size: 12px;
+}
+
+i.sq {
+  display: inline-block;
+  width: 12px;
+  height: 8px;
+  margin-right: 4px;
+  background: url(../assets/index_icon_2x.png) no-repeat;
+  background-size: 166px 97px;
+}
+
+#recommend>.new-songs>main .song>.play {
+  flex-shrink: 0;
+  padding: 0 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#recommend>.new-songs>main .song>.play i {
+  display: inline-block;
+  width: 22px;
+  height: 22px;
+  background: url(../assets/index_icon_2x.png) no-repeat;
+  background-size: 166px 97px;
+  background-position: -24px 0;
+}
