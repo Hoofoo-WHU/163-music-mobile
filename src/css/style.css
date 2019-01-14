@@ -25,6 +25,12 @@ body {
   font: 14px/1.5 Helvetica, sans-serif;
 }
 
+.taper {
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
 #app>header {
   position: fixed;
   display: flex;
@@ -39,12 +45,48 @@ body {
   font-size: 15px;
 }
 
+#app>header .logo {
+  height: 25px;
+  width: 142px;
+  flex-shrink: 0;
+}
+
 #app>header .download {
-  border: 1px solid white;
-  line-height: 28px;
+  position: relative;
+  line-height: 30px;
   height: 30px;
-  padding: 0 9px;
+  padding: 0 10px;
   border-radius: 15px;
+  flex-shrink: 0;
+}
+
+#app>header .download::before {
+  content: '';
+  border: 1px solid white;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 60px;
+  display: block;
+  width: 100%;
+  height: 100%;
+  transform-origin: 0 0;
+}
+
+@media screen and (min-resolution: 1.5dppx), screen and (-webkit-min-device-pixel-ratio: 1.5) {
+  #app>header .download::before {
+    width: 150%;
+    height: 150%;
+    transform: scale(0.6666666666666);
+  }
+}
+
+@media screen and (min-resolution: 2dppx), screen and (-webkit-min-device-pixel-ratio: 2.0) {
+  #app>header .download::before {
+    width: 200%;
+    height: 200%;
+    transform: scale(0.5);
+  }
 }
 
 #app>nav {
@@ -58,15 +100,43 @@ body {
   font-size: 15px;
 }
 
-#app>nav>li {
-  text-align: center;
+#app>nav::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  border-bottom: 1px solid #ccc;
+  transform-origin: 0 0;
 }
 
-#app>nav>li.active {
+@media screen and (min-resolution: 1.5dppx), screen and (-webkit-min-device-pixel-ratio: 2.0) {
+  #app>nav::before {
+    width: 150%;
+    height: 150%;
+    transform: scale(0.6666666666666);
+  }
+}
+
+@media screen and (min-resolution: 2dppx), screen and (-webkit-min-device-pixel-ratio: 2.0) {
+  #app>nav::before {
+    width: 200%;
+    height: 200%;
+    transform: scale(0.5);
+  }
+}
+
+#app>nav>.tab {
+  text-align: center;
+  position: relative;
+}
+
+#app>nav>.tab.active {
   color: #D43B32;
 }
 
-#app>nav>li>div {
+#app>nav>.tab>div {
   position: relative;
   padding: 0 5px;
   display: inline-block;
@@ -74,30 +144,28 @@ body {
   height: 40px;
 }
 
-#app>nav>li.active>div::after {
+#app>nav>.tab.active>div::before {
   content: '';
   position: absolute;
   left: 0;
   bottom: 0;
   width: 100%;
   border-bottom: 2px solid #D43B32;
-  z-index: 1;
 }
 
-#app>nav>li>div>span {
+#app>nav>.tab>div>span {
   vertical-align: middle;
-}
-
-#app>nav::after {
-  content: '';
-  position: absolute;
-  height: 200%;
-  width: 200%;
-  border-bottom: 1px solid #ccc;
-  transform: scale(.5) translate(-50%, -50%);
 }
 
 #app>main {
   margin-top: 104px;
+}
+
+#app>main>section {
+  display: none;
   height: 2000px;
+}
+
+#app>main>section.active {
+  display: block;
 }

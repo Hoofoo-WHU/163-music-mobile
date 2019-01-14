@@ -37,13 +37,14 @@
     }
   }
   let View = class {
-    constructor({ controller, bindEvents, elems, renders, templates }) {
-      Object.assign(this, { elems, templates, controller, renders })
+    constructor({ controller, bindEvents, elems, renders, templates, beforeMount, actions }) {
+      Object.assign(this, { elems, templates, controller, renders }, actions)
       this.controller.view = this
-      bindEvents.call(this)
       for (let key in renders) {
         renders[key].bind(this)
       }
+      beforeMount.call(this)
+      bindEvents.call(this)
     }
   }
 

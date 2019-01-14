@@ -12,27 +12,33 @@
 <body>
   <div id="app">
     <header>
-      <svg class="icon" style="height: 25px;width:142px;" aria-hidden="true">
+      <svg class="logo" aria-hidden="true">
         <use xlink:href="#icon-logo"></use>
       </svg>
-      <span class="download">下载APP</span>
+      <span class="download taper">下载APP</span>
     </header>
     <nav>
-      <li class="active">
+      <li tab-for="recommend" class="tab taper">
         <div><span>推荐音乐</span></div>
       </li>
-      <li>
+      <li tab-for="hot" class="tab taper">
         <div><span>热歌榜</span></div>
       </li>
-      <li>
+      <li tab-for="search" class="tab taper">
         <div><span>搜索</span></div>
       </li>
     </nav>
-    <main>123</main>
+    <main>
+      <section tab-name="recommend">推荐音乐</section>
+      <section tab-name="hot">热歌榜</section>
+      <section tab-name="search">搜索</section>
+    </main>
   </div>
   <script src="//at.alicdn.com/t/font_1013523_l4zd6vehcje.js"></script>
+  <script src="/node_modules/jquery/dist/jquery.min.js"></script>
   <script src="./js/utils.js"></script>
   <script src="./js/app.js"></script>
+  <script src="./js/nav.js"></script>
 </body>
 
 </html>

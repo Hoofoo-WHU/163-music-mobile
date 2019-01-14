@@ -3,9 +3,10 @@
   let Model = window.utils.Model
   window.app = {
     eventHub: new EventHub(),
-    state: new Model({
-      data: {},
-      methods: {}
-    })
+    state: {
+      set scrollTop(val) {
+        $('body').scrollTop(val)
+      }
+    }
   }
 }
