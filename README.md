@@ -1,7 +1,7 @@
 # 163-music-mobile
 A toy 163 music player
 
-[demo](https://hoofoo-whu.github.io/163-music-mobile/)
+[demo](https://hoofoo-whu.github.io/163-music-mobile/src)
 
 ToDo:
 - [x] 导航栏
