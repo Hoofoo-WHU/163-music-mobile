@@ -1,6 +1,8 @@
 # 163-music-mobile
 A toy 163 music player
 
+[demo](https://hoofoo-whu.github.io/163-music-mobile/)
+
 ToDo:
 - [x] 导航栏
 - [ ] 推荐歌曲
