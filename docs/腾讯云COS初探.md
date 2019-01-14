@@ -11,3 +11,4 @@ CORS是必须要设置的，根据Charles抓包的结果，在非同源情况会
 ## API文档
 
 https://cloud.tencent.com/document/product/436/12260#put-object
+
