@@ -2,10 +2,52 @@
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 16px 3px;
-  padding-bottom: 16px;
+  padding-bottom: 20px;
 }
 
-#recommend>.songs>main .song {
-  background: #ccc;
+#recommend>section>h1 {
+  position: relative;
+  font-size: 17px;
+  margin-top: 20px;
+  margin-bottom: 14px;
+  padding-left: 9px;
+  height: 20px;
+  line-height: 20px;
+  cursor: default;
+}
+
+#recommend>section>h1::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: calc(50% - 9px);
+  height: 16px;
+  width: 2px;
+  background-color: #D43B32;
+}
+
+#recommend>.songs>main .song-list {
+  cursor: pointer;
+}
+
+#recommend>.songs>main .song-list>figure {
+  position: relative;
   padding-bottom: 100%;
+  overflow: hidden;
+}
+
+#recommend>.songs>main .song-list>figure>img {
+  position: absolute;
+  width: 100%;
+}
+
+#recommend>.songs>main .song-list>figcaption {
+  padding: 6px 6px 0 6px;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  text-overflow: ellipsis;
+  font-size: 13px;
+  line-height: 1.2;
 }

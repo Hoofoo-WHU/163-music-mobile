@@ -8,6 +8,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
 }
 
 *::before {
@@ -30,10 +31,9 @@ body {
   font: 14px/1.5 Helvetica, sans-serif;
 }
 
-.taper {
+.noselect {
   user-select: none;
   -webkit-user-select: none;
-  -webkit-tap-highlight-color: transparent;
 }
 
 #app>header {
@@ -178,24 +178,4 @@ body {
 
 #app>main>.tab.active {
   display: block;
-}
-
-#app>main>.tab>section>h1 {
-  position: relative;
-  font-size: 17px;
-  margin-top: 20px;
-  margin-bottom: 24px;
-  padding-left: 9px;
-  height: 20px;
-  line-height: 20px;
-}
-
-#app>main>.tab>section>h1::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: calc(50% - 9px);
-  height: 16px;
-  width: 2px;
-  background-color: #D43B32;
 }
