@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="./css/style.css">
+  <link rel="stylesheet" href="./css/recommend.css">
   <title>网易云音乐</title>
 </head>
 
@@ -29,9 +30,24 @@
       </li>
     </nav>
     <main>
-      <section tab-name="recommend">推荐音乐</section>
-      <section tab-name="hot">热歌榜</section>
-      <section tab-name="search">搜索</section>
+      <div id="recommend" tab-name="recommend" class="tab">
+        <section class="songs">
+          <h1>推荐歌单</h1>
+          <main>
+            <div class="song"></div>
+            <div class="song"></div>
+            <div class="song"></div>
+            <div class="song"></div>
+            <div class="song"></div>
+            <div class="song"></div>
+          </main>
+        </section>
+        <section>
+          <h1>最新音乐</h1>
+        </section>
+      </div>
+      <div id="hot" tab-name="hot" class="tab">热歌榜</div>
+      <div id="search" tab-name="search" class="tab">搜索</div>
     </main>
   </div>
   <script src="//at.alicdn.com/t/font_1013523_l4zd6vehcje.js"></script>

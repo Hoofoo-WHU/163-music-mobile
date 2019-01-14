@@ -28,10 +28,9 @@
     elems: {
       $root: $('#app>nav'),
       $tabTitles: $('#app>nav>.tab'),
-      $tabs: $('#app>main>section')
+      $tabs: $('#app>main>.tab')
     },
     templates: {
-
     },
     renders: {
     },

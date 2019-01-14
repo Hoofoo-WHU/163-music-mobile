@@ -1,0 +1,11 @@
+#recommend>.songs>main {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 16px 3px;
+  padding-bottom: 16px;
+}
+
+#recommend>.songs>main .song {
+  background: #ccc;
+  padding-bottom: 100%;
+}

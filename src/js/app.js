@@ -5,7 +5,7 @@
     eventHub: new EventHub(),
     state: {
       set scrollTop(val) {
-        $('body').scrollTop(val)
+        $('body, html').scrollTop(val)
       }
     }
   }

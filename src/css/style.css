@@ -16,12 +16,17 @@
   box-sizing: border-box;
 }
 
+b, em, h1, h2, h3, h4, h5, h6, strong {
+  font-weight: 400;
+}
+
 ol, ul, li {
   list-style: none;
 }
 
 body {
   background-color: #fcfcfd;
+  color: #333;
   font: 14px/1.5 Helvetica, sans-serif;
 }
 
@@ -43,6 +48,7 @@ body {
   background-color: #D43B32;
   width: 100vw;
   font-size: 15px;
+  z-index: 1;
 }
 
 #app>header .logo {
@@ -98,6 +104,7 @@ body {
   height: 40px;
   background: #fff;
   font-size: 15px;
+  z-index: 1;
 }
 
 #app>nav::before {
@@ -161,11 +168,34 @@ body {
   margin-top: 104px;
 }
 
-#app>main>section {
+#app>main>.tab {
+  padding-top: 1px;
+  top: -1px;
+  position: relative;
   display: none;
   height: 2000px;
 }
 
-#app>main>section.active {
+#app>main>.tab.active {
   display: block;
+}
+
+#app>main>.tab>section>h1 {
+  position: relative;
+  font-size: 17px;
+  margin-top: 20px;
+  margin-bottom: 24px;
+  padding-left: 9px;
+  height: 20px;
+  line-height: 20px;
+}
+
+#app>main>.tab>section>h1::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: calc(50% - 9px);
+  height: 16px;
+  width: 2px;
+  background-color: #D43B32;
 }
