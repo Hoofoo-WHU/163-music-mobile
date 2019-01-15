@@ -40,7 +40,7 @@
     templates: {
       $song({ name, singer, sq }) {
         return $(`
-        <a class="song boder-bottom-1px">
+        <a class="song">
           <div class="info">
             <h2 class="line-clamp-1">${name}</h2>
             <p class="line-clamp-1">${sq ? '<i class="sq"></i>' : ''}${singer} - ${name}</p>

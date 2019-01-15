@@ -27,6 +27,10 @@ ol, ul, li {
   list-style: none;
 }
 
+a {
+  text-decoration: none;
+}
+
 body {
   background-color: #fcfcfd;
   color: #333;
@@ -167,16 +171,10 @@ body {
   vertical-align: middle;
 }
 
-#app>main {
-  margin-top: 104px;
-}
-
 #app>main>.tab {
-  padding-top: 1px;
-  top: -1px;
+  padding-top: 104px;
   position: relative;
   display: none;
-  height: 2000px;
 }
 
 #app>main>.tab.active {
