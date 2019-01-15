@@ -53,6 +53,7 @@
 }
 
 #recommend>.new-songs>main .song {
+  cursor: pointer;
   position: relative;
   display: flex;
   margin-left: 10px;

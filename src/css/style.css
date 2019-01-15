@@ -71,6 +71,7 @@ body {
   padding: 0 10px;
   border-radius: 15px;
   flex-shrink: 0;
+  cursor: pointer;
 }
 
 #app>header .download::before {
@@ -144,6 +145,7 @@ body {
 #app>nav>.tab {
   text-align: center;
   position: relative;
+  cursor: pointer;
 }
 
 #app>nav>.tab.active {
