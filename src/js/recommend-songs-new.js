@@ -18,7 +18,7 @@
             }
             this.data.songs = Array(10).fill(song)
             resolve(this.data.songs)
-          }, 100)
+          }, 3000)
         })
       }
     }
@@ -27,8 +27,10 @@
     model,
     actions: {
       async updateSongs() {
+        this.view.loading()
         let songs = await this.model.fetchSongs()
         this.view.renders.renderSongs(songs)
+        this.view.loaded()
       }
     }
   })
@@ -57,6 +59,12 @@
       }
     },
     actions: {
+      loading() {
+        this.elems.$root.addClass('loading')
+      },
+      loaded() {
+        this.elems.$root.removeClass('loading')
+      }
     },
     bindEvents() {
     },
