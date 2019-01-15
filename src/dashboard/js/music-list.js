@@ -11,11 +11,12 @@
     },
     el: $('#musicList'),
     tempate: {
-      songRow({ name, singer, type, size, url }) {
+      songRow({ name, singer, type, size, url, album }) {
         return $(`
         <tr>
           <td>${name}</td>
           <td>${singer}</td>
+          <td>${album || '未知'}</td>
           <td>${type}</td>
           <td>${size}</td>
           <td>

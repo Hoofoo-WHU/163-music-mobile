@@ -23,14 +23,14 @@
     let result = await axios.get('classes/Songs')
     return result.data.results
   }
-  let addSong = async function ({ name, singer, type, size, url, md5 }) {
+  let addSong = async function ({ name, singer, type, size, url, md5, album }) {
     let result = await axios({
       url: 'classes/Songs',
       method: 'post',
       headers: { 'X-LC-Session': sessionToken },
-      data: { name, singer, type, size, url, md5 }
+      data: { name, singer, type, size, url, md5, album }
     })
-    eventBus.emit('musiclist.add', { name, singer, type, size, url, md5, objectId: result.data.objectId })
+    eventBus.emit('musiclist.add', { name, singer, type, size, url, md5, album, objectId: result.data.objectId })
   }
   let removeSong = async function (song) {
     let result = await axios({

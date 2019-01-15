@@ -15,7 +15,8 @@
     async uploadMusic(songlist) {
       songlist.forEach(async song => {
         let md5 = await utils.getFileMD5(song.file)
-        this.cos.putObjectPromise({
+        let covermd5 = await utils.getFileMD5(song.cover)
+        let file = await this.cos.putObjectPromise({
           Bucket: this.bucket,
           Region: this.region,
           Key: `${this.prefix}${md5}.${song.type}`,
@@ -23,17 +24,24 @@
           onProgress: function (progressData) {
             console.dir(progressData);
           }
-        }).then(data => {
-          if (md5 === JSON.parse(data.ETag)) {
-            song.md5 = md5
-            song.url = data.Location
-            console.log(http)
-            http.addSong(song)
-          }
-          console.log('上传成功')
-        }).catch(e => {
-          console.log(e)
         })
+        let cover = await this.cos.putObjectPromise({
+          Bucket: this.bucket,
+          Region: this.region,
+          Key: `images/${covermd5}.${song.cover.type.replace('image/', '')}`,
+          Body: song.cover,
+          onProgress: function (progressData) {
+            console.dir(progressData);
+          }
+        })
+        if (md5 === JSON.parse(file.ETag)) {
+          song.md5 = md5
+          song.url = file.Location
+          song.cover = cover.Location
+          console.log(song)
+          http.addSong(song)
+          console.log('上传成功')
+        }
       })
     },
     getAuthorizationFunction({ username, password }) {

@@ -6,17 +6,24 @@
     }
     return formatFileSize(fileSize / 1024, ++idx)
   }
-  function Song(file) {
-    let matches = file.name.match(/^(.+)\.(\w+)$/)
-    this.type = matches[2]
-    let namemach = matches[1] && matches[1].split(/\s*-\s*/, 2)
-    this.name = namemach[1] || namemach[0]
-    this.singer = namemach[0]
-    this.size = formatFileSize(file.size)
-    this.file = file
+  async function Song(file) {
+    let song = {}
+    let tags = await getMediaTag(file)
+    song.type = file.name.replace(/^.+\./, '')
+    song.name = tags.title
+    song.singer = tags.artist
+    song.album = tags.album
+    song.cover = tags.picture
+    song.size = formatFileSize(file.size)
+    song.file = file
+    return song
   }
-  function toSonglist(filelist) {
-    return new Set([].map.call(filelist, file => new Song(file)))
+  async function toSonglist(filelist) {
+    let set = new Set([].map.call(filelist, async file => {
+      let song = await Song(file)
+      return song
+    }))
+    return Promise.all(set)
   }
   function getFileMD5(file) {
     return new Promise((resolve, reject) => {
@@ -28,9 +35,27 @@
       fileReader.readAsArrayBuffer(file)
     })
   }
+  function getMediaTag(file) {
+    return new Promise((resolve, reject) => {
+      jsmediatags.read(file, {
+        onSuccess: function (tag) {
+          let res = {}
+          res.title = tag.tags.title
+          res.artist = tag.tags.artist
+          res.album = tag.tags.album
+          res.picture = new File([new Uint8Array(tag.tags.picture.data)], `name`, { type: tag.tags.picture.format })
+          resolve(res)
+        },
+        onError: function (error) {
+          reject(error)
+        }
+      })
+    })
+  }
   window.utils = {
     toSonglist,
     formatFileSize,
-    getFileMD5
+    getFileMD5,
+    getMediaTag
   }
 }()

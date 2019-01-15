@@ -9,10 +9,11 @@
       this.bindEvent()
     },
     templates: {
-      songRow: ({ name, singer, type, size }) => {
+      songRow: ({ name, singer, type, size, album }) => {
         return $(`<tr>
             <td>${name}</td>
             <td>${singer}</td>
+            <td>${album}</td>
             <td>${type}</td>
             <td>${size}</td>
             <td><div class="actions"></div></td>
@@ -84,7 +85,7 @@
   let model = {
     songlist: {
       set(songlist) {
-        this.songlist = songlist
+        this.songlist = new Set(songlist)
       },
       get() {
         return this.songlist || new Set()
@@ -118,12 +119,13 @@
       })
       $input.click()
     },
-    setFiles(files) {
+    async setFiles(files) {
       if ([].some.call(files, val => val.type.search('audio') === -1)) {
         alert('不支持上传非音乐格式')
       }
       files = [].filter.call(files, val => val.type.search('audio') !== -1)
-      this.model.songlist.set(utils.toSonglist(files))
+      let songlist = await utils.toSonglist(files)
+      this.model.songlist.set(songlist)
       this.view.renderSonglist(this.model.songlist.get())
     },
     uploadmusic() {
