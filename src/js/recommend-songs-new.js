@@ -1,5 +1,6 @@
 {
   const app = window.app
+  const http = app.http
   const Model = window.utils.Model
   const Controller = window.utils.Controller
   const View = window.utils.View
@@ -9,17 +10,8 @@
     },
     methods: {
       async fetchSongs() {
-        return new Promise((resolve, reject) => {
-          setTimeout(() => {
-            let song = {
-              name: '胜梅桥',
-              singer: '田震',
-              sq: true
-            }
-            this.data.songs = Array(10).fill(song)
-            resolve(this.data.songs)
-          }, 3000)
-        })
+        let songs = await http.getMusicList({ k: 10 })
+        return songs
       }
     }
   })
@@ -40,12 +32,12 @@
       $root: $('#recommend>.new-songs>main')
     },
     templates: {
-      $song({ name, singer, sq }) {
+      $song({ name, singer, album, sq, objectId }) {
         return $(`
-        <a url="javascript:;" class="song">
+        <a href="./play?id=${objectId}" class="song">
           <div class="info">
             <h2 class="line-clamp-1">${name}</h2>
-            <p class="line-clamp-1">${sq ? '<i class="sq"></i>' : ''}${singer} - ${name}</p>
+            <p class="line-clamp-1">${sq ? '<i class="sq"></i>' : ''}${singer} - ${album}</p>
           </div>
           <div class="play"><i></i></div>
         </a>`)
@@ -54,6 +46,10 @@
     renders: {
       renderSongs(songs) {
         songs.forEach(song => {
+          if (Math.random() >= 0.5) {
+            song.sq = true
+          }
+          console.log(song)
           this.elems.$root.append(this.templates.$song(song))
         })
       }
