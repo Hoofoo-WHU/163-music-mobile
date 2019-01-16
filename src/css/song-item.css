@@ -1,11 +1,23 @@
 .song-item {
   cursor: pointer;
-  position: relative;
   display: flex;
-  margin-left: 10px;
+  align-items: center;
+  padding-left: 10px;
 }
 
-.song-item::before {
+.song-item>.rank {
+  width: 28px;
+  font-size: 17px;
+  color: #df3436;
+}
+
+.song-item>main {
+  position: relative;
+  flex-grow: 1;
+  display: flex;
+}
+
+.song-item>main::before {
   content: '';
   position: absolute;
   top: 0;
@@ -25,7 +37,7 @@
 }
 
 @media screen and (min-resolution: 1.5dppx), screen and (-webkit-min-device-pixel-ratio: 2.0) {
-  .song-item::before {
+  .song-item>main::before {
     width: 150%;
     height: 150%;
     transform: scale(0.6666666666666);
@@ -33,29 +45,29 @@
 }
 
 @media screen and (min-resolution: 2dppx), screen and (-webkit-min-device-pixel-ratio: 2.0) {
-  .song-item::before {
+  .song-item>main::before {
     width: 200%;
     height: 200%;
     transform: scale(0.5);
   }
 }
 
-.song-item>.info {
+.song-item>main>.info {
   flex-grow: 1;
   padding: 6px 0;
   min-width: 0;
 }
 
-.song-item>.info h2 {
+.song-item>main>.info h2 {
   font-size: 17px;
 }
 
-.song-item>.info p {
+.song-item>main>.info p {
   color: #888;
   font-size: 12px;
 }
 
-.song-item>.play {
+.song-item>main>.play {
   flex-shrink: 0;
   padding: 0 10px;
   display: flex;
@@ -63,7 +75,7 @@
   align-items: center;
 }
 
-.song-item>.play i {
+.song-item>main>.play i {
   display: inline-block;
   width: 22px;
   height: 22px;

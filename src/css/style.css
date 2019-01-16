@@ -32,7 +32,7 @@ a {
   color: inherit;
 }
 
-body {
+html, body {
   background-color: #fcfcfd;
   color: #333;
   font: 14px/1.5 Helvetica, sans-serif;
@@ -67,12 +67,22 @@ body {
 
 #app>header .download {
   position: relative;
-  line-height: 30px;
+  display: flex;
+  align-items: center;
+  line-height: 1em;
   height: 30px;
-  padding: 0 10px;
+  padding: 0 6px;
   border-radius: 15px;
   flex-shrink: 0;
   cursor: pointer;
+  font-size: 14px;
+}
+
+#app>header .download .github {
+  width: 18px;
+  height: 18px;
+  margin-right: 4px;
+  fill: #fff;
 }
 
 #app>header .download::before {
