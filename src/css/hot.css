@@ -30,3 +30,19 @@
   transform: scale(.91);
   transform-origin: 0 0;
 }
+
+#hot>main>footer {
+  height: 55px;
+  line-height: 55px;
+  text-align: center;
+  cursor: pointer;
+}
+
+#hot>main>footer>span {
+  color: #999;
+  display: inline-block;
+  padding-right: 14px;
+  background: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNCAyMiI+PHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBmaWxsPSJub25lIiBzdHJva2U9IiNjY2MiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLW1pdGVybGltaXQ9IjEwIiBkPSJtMSAxbDEwIDEwLTEwIDEwIi8+PC9zdmc+) no-repeat;
+  background-position: right center;
+  background-size: 7px 12px;
+}

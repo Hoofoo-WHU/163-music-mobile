@@ -11,7 +11,7 @@
     },
     methods: {
       async fetchSongs() {
-        this.data.songs = await http.getMusicList({ k: 2 })
+        this.data.songs = await http.getMusicList({ k: 3 })
         return this.data.songs
       }
     }
@@ -51,6 +51,7 @@
           song.rank = (index + 1).toString().padStart(2, 0)
           this.elems.$root.append(this.templates.$song(song))
         })
+        this.elems.$root.append($('<footer><span>查看完整榜单</span></footer>'))
       },
       time(date) {
         let updateDate = `${(date.getMonth() + 1).toString().padStart(2, 0)}月${date.getDate().toString().padStart(2, 0)}日`
@@ -72,6 +73,9 @@
         if (name === 'hot') {
           this.controller.loadSongs()
         }
+      })
+      this.elems.$root.on('click', 'footer', () => {
+        alert('练手项目不能跳转到APP！')
       })
     }
   })

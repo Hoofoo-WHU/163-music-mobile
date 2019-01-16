@@ -2,6 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  -webkit-user-drag: none;
   -webkit-tap-highlight-color: transparent;
 }
 
@@ -9,12 +10,14 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  -webkit-user-drag: none;
   -webkit-tap-highlight-color: transparent;
 }
 
 *::before {
   margin: 0;
   padding: 0;
+  -webkit-user-drag: none;
   box-sizing: border-box;
   -webkit-tap-highlight-color: transparent;
 }
