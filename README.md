@@ -5,9 +5,11 @@ A toy 163 music player
 
 ToDo:
 - [x] 导航栏
-- [ ] 推荐歌曲
-- [ ] 热歌榜
+- [x] 推荐歌曲
+- [x] 热歌榜
 - [ ] 搜索
+- [ ] 播放页
+- [ ] 列表页
 
 Dashboard ToDo:
 - [x] 上传歌曲
