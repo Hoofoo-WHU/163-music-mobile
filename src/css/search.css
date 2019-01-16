@@ -21,6 +21,8 @@
 
 #search form input {
   flex-grow: 1;
+  user-select: text;
+  -webkit-user-select: text;
   background-color: transparent;
   border: none;
   height: 100%;
