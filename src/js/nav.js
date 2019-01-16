@@ -51,7 +51,7 @@
       })
     },
     beforeMount() {
-      this.controller.active(this.elems.$tabTitles.first().attr('tab-for'))
+      this.controller.active(this.elems.$tabTitles.last().attr('tab-for'))
     }
   })
 }

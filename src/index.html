@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="./css/song-item.css">
   <link rel="stylesheet" href="./css/recommend.css">
   <link rel="stylesheet" href="./css/hot.css">
+  <link rel="stylesheet" href="./css/search.css">
   <title>网易云音乐</title>
 </head>
 
@@ -18,7 +19,7 @@
       <svg class="logo" aria-hidden="true">
         <use xlink:href="#icon-logo"></use>
       </svg>
-      <span class="download noselect">
+      <span class="download boder-1px-radius noselect">
         <svg class="github" aria-hidden="true">
           <use xlink:href="#icon-GitHub"></use>
         </svg>
@@ -58,7 +59,7 @@
           <p class="copyright">hoofoo-whu.github.io©2019 练习所用</p>
         </footer>
       </div>
-      <div id="hot" tab-name="hot" class="tab">
+      <div id="hot" tab-name="hot" class="tab noselect">
         <header>
           <div class="wrapper">
             <div class="icon"></div>
@@ -67,7 +68,37 @@
         </header>
         <main></main>
       </div>
-      <div id="search" tab-name="search" class="tab">搜索</div>
+      <div id="search" tab-name="search" class="tab">
+        <form action="get" action="#" class="boder-bottom-1px light">
+          <main>
+            <i></i>
+            <input type="text" placeholder="搜索歌曲、歌手、专辑">
+            <figure class="empty"></figure>
+          </main>
+        </form>
+        <section class="hotlist">
+          <h2>热门搜索</h2>
+          <ul>
+            <li class="boder-1px-radius">起风了</li>
+            <li class="boder-1px-radius">嗯嗯嗯</li>
+            <li class="boder-1px-radius">啊啊啊啊</li>
+            <li class="boder-1px-radius">11</li>
+            <li class="boder-1px-radius">打飞机</li>
+            <li class="boder-1px-radius">阿迪</li>
+          </ul>
+        </section>
+        <section class="history">
+          <ul>
+            <li>
+              <i></i>
+              <div class="boder-bottom-1px light">
+                <span class="line-clamp-1">起风了</span>
+                <figure></figure>
+              </div>
+            </li>
+          </ul>
+        </section>
+      </div>
     </main>
   </div>
   <script src="//at.alicdn.com/t/font_1013523_35o5a06127c.js"></script>
@@ -81,6 +112,7 @@
   <script src="./js/recommend-songs.js"></script>
   <script src="./js/recommend-songs-new.js"></script>
   <script src="./js/hot.js"></script>
+  <script src="./js/search.js"></script>
   <script src="./js/nav.js"></script>
 </body>
 
