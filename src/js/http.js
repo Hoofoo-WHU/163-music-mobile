@@ -1,5 +1,4 @@
 {
-  let eventHub = window.app.eventHub
   const axios = window.axios.create({
     baseURL: 'https://rs2cp2z7.api.lncld.net/1.1/',
     headers: {
@@ -12,7 +11,12 @@
     let result = await axios.get(`cloudQuery?cql=select * from Songs ${k !== undefined ? `limit 0, ${k}` : ''} order by ${order}createdAt`)
     return result.data.results
   }
+  let getMusic = async function (objectId) {
+    let { data } = await axios.get(`classes/Songs/${objectId}`)
+    return data
+  }
   window.app.http = {
-    getMusicList
+    getMusicList,
+    getMusic
   }
 }
