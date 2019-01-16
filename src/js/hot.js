@@ -52,7 +52,8 @@
         })
       },
       time(date) {
-        let updateDate = `${(date.getMonth() + 1).toString().padStart(2, 0)}月${date.getDay().toString().padStart(2, 0)}日`
+        console.log(date)
+        let updateDate = `${(date.getMonth() + 1).toString().padStart(2, 0)}月${date.getDate().toString().padStart(2, 0)}日`
         this.elems.$time.html(updateDate)
       }
     },
