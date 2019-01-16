@@ -7,7 +7,7 @@
       if (this.events.has(name)) {
         this.events.get(name).add(callback)
       } else {
-        this.events.get(name) = new Set([callback])
+        this.events.set(name, new Set([callback]))
       }
     }
     remove(name, callback) {

@@ -1,0 +1,32 @@
+#hot>header {
+  position: relative;
+  color: rgba(255, 255, 255, 0.8);
+  background: url(../assets/hot_music_bg_2x.jpg) no-repeat center/cover;
+  padding-bottom: 38.9%;
+}
+
+#hot>header .wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: absolute;
+  padding-left: 20px;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+#hot>header .wrapper>.icon {
+  width: 142px;
+  height: 67px;
+  background: url(../assets/index_icon_2x.png) no-repeat -24px -30px/166px 97px;
+}
+
+#hot>header .wrapper>.time {
+  margin-top: 10px;
+  font-size: 12px;
+  transform: scale(.91);
+  transform-origin: 0 0;
+}

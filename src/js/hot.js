@@ -3,15 +3,15 @@
   const http = app.http
   const eventHub = app.eventHub
   const Model = window.utils.Model
-  const Controller = window.utils.Controller
   const View = window.utils.View
+  const Controller = window.utils.Controller
   let model = new Model({
     data: {
       songs: null
     },
     methods: {
       async fetchSongs() {
-        this.data.songs = await http.getMusicList({ k: 10 })
+        this.data.songs = await http.getMusicList({ k: 2 })
         return this.data.songs
       }
     }
@@ -22,6 +22,7 @@
       async updateSongs() {
         this.view.loading()
         let songs = await this.model.fetchSongs()
+        this.view.renders.time(new Date(songs[0].createdAt))
         this.view.renders.songs(songs)
         this.view.loaded()
       },
@@ -35,7 +36,8 @@
   let view = new View({
     controller,
     elems: {
-      $root: $('#recommend>.new-songs>main')
+      $root: $('#hot>main'),
+      $time: $('#hot>header .time>span')
     },
     templates: {
       $song: app.TEMPLATES.SONG_ITEM
@@ -48,6 +50,10 @@
           }
           this.elems.$root.append(this.templates.$song(song))
         })
+      },
+      time(date) {
+        let updateDate = `${(date.getMonth() + 1).toString().padStart(2, 0)}月${date.getDay().toString().padStart(2, 0)}日`
+        this.elems.$time.html(updateDate)
       }
     },
     actions: {
@@ -58,14 +64,14 @@
         this.elems.$root.removeClass('loading')
       }
     },
+    beforeMount() {
+    },
     bindEvents() {
       eventHub.on('nav.active', name => {
-        if (name === 'recommend') {
+        if (name === 'hot') {
           this.controller.loadSongs()
         }
       })
-    },
-    beforeMount() {
     }
   })
 }

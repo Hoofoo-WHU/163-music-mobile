@@ -1,5 +1,6 @@
 {
   const app = window.app
+  const eventHub = window.app.eventHub
   const Model = window.utils.Model
   const Controller = window.utils.Controller
   const View = window.utils.View
@@ -20,6 +21,7 @@
       active(tabName) {
         this.model.active(tabName)
         this.view.active(tabName)
+        eventHub.emit('nav.active', tabName)
       }
     }
   })
