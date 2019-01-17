@@ -5,10 +5,49 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    #app {
+      /* filter: blur(10px); */
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+      color: white;
+    }
+
+    #back {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      background-size: cover;
+      background-position: center;
+      filter: blur(10px) brightness(0.8);
+      transform: scale(1.1)
+    }
+
+    button {
+      color: white;
+    }
+
+    main {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+    }
+  </style>
   <title>Document</title>
 </head>
 
 <body>
+  <div id="app">
+    <div id="back"></div>
+    <main></main>
+  </div>
   <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdn.bootcss.com/axios/0.19.0-beta.1/axios.min.js"></script>
   <script src="../js/utils.js"></script>
