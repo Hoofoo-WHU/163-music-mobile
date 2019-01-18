@@ -57,6 +57,13 @@ audio {
   display: none;
 }
 
+.line-clamp-1 {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  word-break: normal;
+}
+
 .loading::before {
   content: '';
   display: block;
@@ -116,7 +123,7 @@ audio {
   padding-right: 10px;
   box-sizing: content-box;
   flex-grow: 1;
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 
 .content-wrapper .main-inner::-webkit-scrollbar {
@@ -137,6 +144,7 @@ audio {
 }
 
 .content-wrapper .main-inner>.player {
+  min-height: 341px;
   overflow: hidden;
 }
 
@@ -144,7 +152,6 @@ audio {
   position: relative;
   height: 248px;
   width: 248px;
-  outline: 1px solid tomato;
   margin-top: 63px;
   margin-left: auto;
   margin-right: auto;
@@ -170,7 +177,6 @@ audio {
   top: -63px;
   left: 107px;
   background: url(../../assets/needle.png) center/84px 122px no-repeat;
-  outline: 1px solid greenyellow;
 }
 
 .main-inner>.player .disc .light {
@@ -197,7 +203,6 @@ audio {
   height: 150px;
   background-size: cover;
   background-position: center;
-  outline: 1px solid turquoise;
   border-radius: 50%;
 }
 
@@ -215,7 +220,6 @@ audio {
 }
 
 .main-inner>.player .disc .state {
-  outline: 1px solid palevioletred;
   position: absolute;
   top: calc(50% - 25px);
   left: calc(50% - 25px);
@@ -229,6 +233,20 @@ audio {
 
 .main-inner>.player .disc.play .state {
   display: none;
+}
+
+.main-inner>.player .info {
+  color: #fefefe;
+  margin-top: 15px;
+  line-height: 1;
+  font-size: 15px;
+  text-align: center;
+  padding: 0 35px;
+}
+
+.main-inner>.player .info .singer {
+  font-size: 13px;
+  color: hsla(0, 0%, 100%, 0.6)
 }
 
 .content-wrapper>footer {

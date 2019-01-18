@@ -57,9 +57,10 @@
           let song = await this.model.fetch()
           console.log(song)
           this.view.setTitle(`${song.name} - ${song.singer} - 网易云音乐`)
-          this.view.renders.audio(song.url)
           this.view.renders.background(song.cover)
           this.view.renders.cover(song.cover)
+          this.view.renders.info(song.name, song.singer)
+          this.view.renders.audio(song.url)
         } catch (e) {
           alert(e)
         }
@@ -88,7 +89,8 @@
       $player: $('.main-inner>.player'),
       $disc: $('.main-inner>.player .disc'),
       $audio: null,
-      $loading: $('#app>.loading')
+      $loading: $('#app>.loading'),
+      $info: $('.main-inner>.player .info')
     },
     templates: {
       $background(url) {
@@ -99,6 +101,9 @@
       },
       $audio(url) {
         return $(`<audio src="//${url}"></audio>`)
+      },
+      $info(name, singer) {
+        return $(`<span>${name} - <span class="singer">${singer}</span></span>`)
       }
     },
     renders: {
@@ -121,6 +126,9 @@
           this.controller.ended()
         })
         this.elems.$root.append(this.elems.$audio)
+      },
+      info(name, singer) {
+        this.elems.$info.append(this.templates.$info(name, singer))
       }
     },
     actions: {
@@ -149,9 +157,11 @@
       }
     },
     bindEvents() {
-      $(window).on('resize', () => {
-        this.updatePlayerSize()
-      })
+      if (!utils.isMobile()) {
+        $(window).on('resize', (e) => {
+          this.updatePlayerSize()
+        })
+      }
       this.elems.$player.on('click', () => {
         this.controller.toggleState()
       })
