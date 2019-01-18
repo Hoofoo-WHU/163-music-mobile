@@ -110,9 +110,13 @@
       },
       audio(url) {
         this.elems.$audio = this.templates.$audio(url)
-        this.elems.$audio.on('canplay', () => {
+        if (utils.isMobile()) {
           this.controller.canplay()
-        })
+        } else {
+          this.elems.$audio.on('canplay', () => {
+            this.controller.canplay()
+          })
+        }
         this.elems.$audio.on('ended', () => {
           this.controller.ended()
         })

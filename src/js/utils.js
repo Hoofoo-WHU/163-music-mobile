@@ -68,12 +68,20 @@
       }
     }
   }
+  function isMobile() {
+    if (!!window.navigator.userAgent.match(/AppleWebKit.*Mobile.*/) && !!window.navigator.userAgent.match(/AppleWebKit/)) {
+      return true
+    } else {
+      return false
+    }
+  }
 
   window.utils = {
     EventHub,
     Model,
     View,
     Controller,
-    URLParams
+    URLParams,
+    isMobile
   }
 }
