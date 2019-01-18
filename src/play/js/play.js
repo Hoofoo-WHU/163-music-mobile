@@ -47,7 +47,9 @@
         try {
           let song = await this.model.fetch()
           console.log(song)
+          this.view.setTitle(`${song.name} - ${song.singer} - 网易云音乐`)
           this.view.renders.background(song.cover)
+          this.view.renders.cover(song.cover)
         } catch (e) {
           alert(e)
         }
@@ -57,28 +59,42 @@
   let view = new View({
     controller,
     elems: {
-      $scoller: $('.content-wrapper .main-inner')
+      $root: $('#app'),
+      $scoller: $('.content-wrapper .main-inner'),
+      $player: $('.main-inner>.player'),
+      $disc: $('.main-inner>.player .disc')
     },
     templates: {
       $background(url) {
         return $(`<div class="background"></div>`).css({ backgroundImage: `url(//${url})` })
+      },
+      $cover(url) {
+        return $(`<div class="cover"></div>`).css({ backgroundImage: `url(//${url})` })
       }
     },
     renders: {
       background(url) {
-        let $background = this.templates.$background(url)
-        if (window.safari) {
-          $background.addClass('safari')
-        }
-        $('#app').prepend($background)
+        this.elems.$root.prepend(this.templates.$background(url))
+      },
+      cover(url) {
+        this.elems.$disc.find('.light').prepend(this.templates.$cover(url))
       }
     },
     actions: {
-
+      setTitle(title) {
+        document.title = title
+      },
+      updatePlayerSize() {
+        this.elems.$player.height(this.elems.$scoller.parent().height())
+      }
     },
     bindEvents() {
+      $(window).on('resize', () => {
+        this.updatePlayerSize()
+      })
     },
     beforeMount() {
+      this.updatePlayerSize()
       this.controller.loadSong()
     }
   })
