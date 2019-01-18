@@ -53,6 +53,10 @@ html, body {
   overflow: hidden;
 }
 
+audio {
+  display: none;
+}
+
 #app {
   position: fixed;
   top: 0;
@@ -161,9 +165,6 @@ html, body {
   border-radius: 50%;
   background: url(../../assets/disc_light.png) center/contain no-repeat;
   animation: rotate infinite linear 20s;
-}
-
-.main-inner>.player .disc.pause .light {
   animation-play-state: paused;
 }
 
@@ -192,7 +193,7 @@ html, body {
   }
 }
 
-.main-inner>.player .disc.pause .state {
+.main-inner>.player .disc .state {
   outline: 1px solid palevioletred;
   position: absolute;
   top: calc(50% - 25px);

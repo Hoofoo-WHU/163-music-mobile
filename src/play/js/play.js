@@ -27,7 +27,8 @@
   // }()
   let model = new Model({
     data: {
-      song: null
+      song: null,
+      state: undefined
     },
     methods: {
       async fetch() {
@@ -37,6 +38,10 @@
         } else {
           throw new Error('歌曲不存在')
         }
+      },
+      toggleState() {
+        this.state = this.state ? false : true
+        return this.state
       }
     }
   })
@@ -48,10 +53,18 @@
           let song = await this.model.fetch()
           console.log(song)
           this.view.setTitle(`${song.name} - ${song.singer} - 网易云音乐`)
+          this.view.renders.audio(song.url)
           this.view.renders.background(song.cover)
           this.view.renders.cover(song.cover)
         } catch (e) {
           alert(e)
+        }
+      },
+      toggleState() {
+        if (this.model.toggleState()) {
+          this.view.play()
+        } else {
+          this.view.pause()
         }
       }
     }
@@ -62,7 +75,8 @@
       $root: $('#app'),
       $scoller: $('.content-wrapper .main-inner'),
       $player: $('.main-inner>.player'),
-      $disc: $('.main-inner>.player .disc')
+      $disc: $('.main-inner>.player .disc'),
+      $audio: null
     },
     templates: {
       $background(url) {
@@ -70,6 +84,9 @@
       },
       $cover(url) {
         return $(`<div class="cover"></div>`).css({ backgroundImage: `url(//${url})` })
+      },
+      $audio(url) {
+        return $(`<audio src="//${url}"></audio>`)
       }
     },
     renders: {
@@ -78,6 +95,10 @@
       },
       cover(url) {
         this.elems.$disc.find('.light').prepend(this.templates.$cover(url))
+      },
+      audio(url) {
+        this.elems.$audio = this.templates.$audio(url)
+        this.elems.$root.append(this.elems.$audio)
       }
     },
     actions: {
@@ -86,11 +107,22 @@
       },
       updatePlayerSize() {
         this.elems.$player.height(this.elems.$scoller.parent().height())
+      },
+      play() {
+        this.elems.$audio.trigger('play')
+        this.elems.$disc.addClass('play')
+      },
+      pause() {
+        this.elems.$audio.trigger('pause')
+        this.elems.$disc.removeClass('play')
       }
     },
     bindEvents() {
       $(window).on('resize', () => {
         this.updatePlayerSize()
+      })
+      this.elems.$player.on('click', () => {
+        this.controller.toggleState()
       })
     },
     beforeMount() {
