@@ -1,0 +1,83 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+  -webkit-overflow-scrolling: touch;
+  touch-action: manipulation;
+}
+
+#app {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  color: white;
+}
+
+#app>.background {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  filter: blur(16px) brightness(0.6);
+  transform: scale(1.1)
+}
+
+#app>.background.safari {
+  position: fixed;
+}
+
+.content-wrapper {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.content-wrapper>main {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.content-wrapper .main-inner {
+  width: 100vw;
+  padding-right: 10px;
+  box-sizing: content-box;
+  flex-grow: 1;
+  overflow-y: scroll;
+}
+
+.content-wrapper .main-inner::-webkit-scrollbar {
+  display: none;
+}
+
+.content-wrapper .main-inner>.logo {
+  flex-grow: 0;
+  width: 0;
+  height: 0;
+}
+
+.content-wrapper .main-inner>.logo .m-logo {
+  margin-top: 12px;
+  margin-left: 10px;
+  width: 92px;
+  height: 17px;
+}
+
+.content-wrapper .main-inner>.player {}
+
+.content-wrapper>footer {
+  flex-shrink: 0;
+  height: 40px;
+  margin-bottom: 20px;
+}
