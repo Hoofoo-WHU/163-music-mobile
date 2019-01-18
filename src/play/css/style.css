@@ -189,7 +189,7 @@ audio {
   animation-play-state: running;
 }
 
-.main-inner>.player .disc .light .cover {
+.main-inner>.player .disc .light .default, .main-inner>.player .disc .light .cover {
   position: absolute;
   top: calc(50% - 75px);
   left: calc(50% - 75px);
@@ -199,6 +199,10 @@ audio {
   background-position: center;
   outline: 1px solid turquoise;
   border-radius: 50%;
+}
+
+.main-inner>.player .disc .light .default {
+  background-image: url(../../assets/disc_default.png);
 }
 
 @keyframes rotate {

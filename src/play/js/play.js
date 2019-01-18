@@ -106,7 +106,7 @@
         this.elems.$root.prepend(this.templates.$background(url))
       },
       cover(url) {
-        this.elems.$disc.find('.light').prepend(this.templates.$cover(url))
+        this.elems.$disc.find('.light').append(this.templates.$cover(url))
       },
       audio(url) {
         this.elems.$audio = this.templates.$audio(url)
