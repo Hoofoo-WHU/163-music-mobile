@@ -42,6 +42,9 @@
       toggleState() {
         this.state = this.state ? false : true
         return this.state
+      },
+      ended() {
+        this.state = false
       }
     }
   })
@@ -50,6 +53,7 @@
     actions: {
       async loadSong() {
         try {
+          this.view.loading()
           let song = await this.model.fetch()
           console.log(song)
           this.view.setTitle(`${song.name} - ${song.singer} - 网易云音乐`)
@@ -66,6 +70,13 @@
         } else {
           this.view.pause()
         }
+      },
+      canplay() {
+        this.view.loaded()
+      },
+      ended() {
+        this.model.ended()
+        this.view.ended()
       }
     }
   })
@@ -76,7 +87,8 @@
       $scoller: $('.content-wrapper .main-inner'),
       $player: $('.main-inner>.player'),
       $disc: $('.main-inner>.player .disc'),
-      $audio: null
+      $audio: null,
+      $loading: $('#app>.loading')
     },
     templates: {
       $background(url) {
@@ -98,6 +110,12 @@
       },
       audio(url) {
         this.elems.$audio = this.templates.$audio(url)
+        this.elems.$audio.on('canplay', () => {
+          this.controller.canplay()
+        })
+        this.elems.$audio.on('ended', () => {
+          this.controller.ended()
+        })
         this.elems.$root.append(this.elems.$audio)
       }
     },
@@ -114,6 +132,15 @@
       },
       pause() {
         this.elems.$audio.trigger('pause')
+        this.elems.$disc.removeClass('play')
+      },
+      loading() {
+        this.elems.$loading.addClass('active')
+      },
+      loaded() {
+        this.elems.$loading.removeClass('active')
+      },
+      ended() {
         this.elems.$disc.removeClass('play')
       }
     },
