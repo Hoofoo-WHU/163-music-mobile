@@ -20,8 +20,14 @@
         }
       },
       toggleState() {
-        this.state = this.state ? false : true
-        return this.state
+        this.data.state = this.data.state ? false : true
+        return this.data.state
+      },
+      play() {
+        this.data.state = true
+      },
+      pause() {
+        this.data.state = false
       },
       ended() {
         this.state = false
@@ -54,6 +60,14 @@
         } else {
           this.view.pause()
         }
+      },
+      onPause() {
+        this.model.pause()
+        this.view.pauseAnimate()
+      },
+      onPlay() {
+        this.model.play()
+        this.view.playAnimate()
       },
       canplay() {
         this.view.loaded()
@@ -121,6 +135,12 @@
             this.controller.canplay()
           })
         }
+        this.elems.$audio.on('play', () => {
+          this.controller.onPlay()
+        })
+        this.elems.$audio.on('pause', () => {
+          this.controller.onPause()
+        })
         this.elems.$audio.on('ended', () => {
           this.controller.ended()
         })
@@ -147,10 +167,14 @@
       },
       play() {
         this.elems.$audio.trigger('play')
-        this.elems.$disc.addClass('play')
       },
       pause() {
         this.elems.$audio.trigger('pause')
+      },
+      playAnimate() {
+        this.elems.$disc.addClass('play')
+      },
+      pauseAnimate() {
         this.elems.$disc.removeClass('play')
       },
       loading() {
