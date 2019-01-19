@@ -364,6 +364,34 @@ audio {
 
 .content-wrapper>footer {
   flex-shrink: 0;
+  margin-bottom: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-column-gap: 10px;
+  font-size: 18px;
+  letter-spacing: 0.5em;
+  text-indent: 0.5em;
+}
+
+.content-wrapper>footer .button {
+  cursor: pointer;
+  text-align: center;
+  line-height: 40px;
+  display: block;
+  min-width: 0;
   height: 40px;
-  margin-bottom: 20px;
+  border-radius: 20px;
+  border: 1px solid greenyellow;
+}
+
+.content-wrapper>footer .button:first-child {
+  border-color: #D43B32;
+  color: #D43B32;
+}
+
+.content-wrapper>footer .button:last-child {
+  border-color: #D43B32;
+  background-color: #D43B32;
 }
