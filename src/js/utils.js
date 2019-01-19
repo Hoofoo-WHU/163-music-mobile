@@ -97,6 +97,15 @@
       return res
     }
   }
+  function debounce(func, time) {
+    let timmer
+    return function () {
+      clearTimeout(timmer)
+      timmer = setTimeout((e) => {
+        func.apply(this, arguments)
+      }, time)
+    }
+  }
 
   window.utils = {
     EventHub,
@@ -105,6 +114,7 @@
     Controller,
     URLParams,
     Lrc,
-    isMobile
+    isMobile,
+    debounce
   }
 }

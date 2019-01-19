@@ -5,6 +5,7 @@
   const View = window.utils.View
   const Controller = window.utils.Controller
   const Lrc = window.utils.Lrc
+  const debounce = window.utils.debounce
   const urlParams = new URLParams(window.location)
   let model = new Model({
     data: {
@@ -213,13 +214,13 @@
       this.elems.$player.on('click', () => {
         this.controller.toggleState()
       })
-      this.elems.$scoller.on('scroll', (e) => {
+      this.elems.$scoller.on('scroll', debounce((e) => {
         if (e.currentTarget.scrollTop > 35) {
           this.hideArrow()
         } else {
           this.showArrow()
         }
-      })
+      }, 100))
       this.elems.$arrow.on('click', (e) => {
         e.stopPropagation()
         this.elems.$scoller.animate({ scrollTop: this.elems.$scoller.parent().height() }, 400)
