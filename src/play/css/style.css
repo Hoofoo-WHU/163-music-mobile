@@ -262,6 +262,7 @@ audio {
 
 .main-inner>.player .lyrics {
   transition: transform 0.3s ease-out;
+  padding: 0 35px;
 }
 
 .main-inner>.player .lyrics .row {

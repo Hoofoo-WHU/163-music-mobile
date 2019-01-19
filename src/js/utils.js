@@ -75,6 +75,28 @@
       return false
     }
   }
+  let Lrc = class {
+    constructor(lrctxt) {
+      this.lrctxt = lrctxt.replace()
+      this.reg = /\[([\d:\.]+)\](.+)/g
+    }
+    next() {
+      let matches = this.reg.exec(this.lrctxt)
+      if (matches) {
+        let time = matches[1].split(':')
+        return { time: time[0] * 60 + (+time[1]), text: matches[2].trim() }
+      }
+      return null
+    }
+    behind() {
+      let res = []
+      let i = null
+      while (i = this.next()) {
+        res.push(i)
+      }
+      return res
+    }
+  }
 
   window.utils = {
     EventHub,
@@ -82,6 +104,7 @@
     View,
     Controller,
     URLParams,
+    Lrc,
     isMobile
   }
 }

@@ -4,6 +4,7 @@
   const Model = window.utils.Model
   const View = window.utils.View
   const Controller = window.utils.Controller
+  const Lrc = window.utils.Lrc
   const urlParams = new URLParams(window.location)
   let model = new Model({
     data: {
@@ -47,11 +48,11 @@
           this.view.renders.cover(song.cover)
           this.view.renders.info(song.name, song.singer)
           this.view.renders.audio(song.url)
-          let lrc = new window.Lrc(window.lrctxt)
+          let lrc = new Lrc(song.lyrics)
           this.model.data.lrc = lrc.behind()
           this.view.renders.lyrics(this.model.data.lrc)
         } catch (e) {
-          alert(e)
+          alert('歌曲加载失败，刷新再试')
         }
       },
       toggleState() {
