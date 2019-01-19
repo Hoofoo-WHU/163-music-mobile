@@ -5,26 +5,6 @@
   const View = window.utils.View
   const Controller = window.utils.Controller
   const urlParams = new URLParams(window.location)
-  // ~async function () {
-  //   let song = await http.getMusic(urlParams.id)
-  //   console.log(song)
-  //   let audio = $(`<audio src="//${song.url}" controls autoplay></audio>`)
-  //   $('#app>main').append(audio)
-  //   function play() {
-  //     if ($(this).html() === '播放') {
-  //       $(this).html('暂停')
-  //       audio.trigger('play')
-  //     } else {
-  //       $(this).html('播放')
-  //       audio.trigger('pause')
-  //     }
-  //   }
-  //   $('#back').css({ 'background-image': `url(//${song.cover})` })
-  //   $('#app>main').append($(`<h2>歌名：${song.name}</h2>`))
-  //   $('#app>main').append($(`<h2>歌手：${song.singer}</h2>`))
-  //   $('#app>main').append($(`<h2>专辑：${song.album}</h2>`))
-  //   $('#app>main').append($(`<button>播放</button>`).on('click', play))
-  // }()
   let model = new Model({
     data: {
       song: null,
@@ -61,6 +41,9 @@
           this.view.renders.cover(song.cover)
           this.view.renders.info(song.name, song.singer)
           this.view.renders.audio(song.url)
+          let lrc = new window.Lrc(window.lrctxt)
+          this.model.data.lrc = lrc.behind()
+          this.view.renders.lyrics(this.model.data.lrc)
         } catch (e) {
           alert(e)
         }
@@ -78,6 +61,18 @@
       ended() {
         this.model.ended()
         this.view.ended()
+        this.view.toLyrics(0)
+      },
+      timeupdate(time) {
+        let last = this.model.data.lrc[0] && this.model.data.lrc[0].time
+        this.model.data.lrc.every(val => {
+          if (val.time > time) {
+            return false
+          }
+          last = val.time
+          return true
+        })
+        this.view.toLyrics(last)
       }
     }
   })
@@ -90,7 +85,8 @@
       $disc: $('.main-inner>.player .disc'),
       $audio: null,
       $loading: $('#app>.loading'),
-      $info: $('.main-inner>.player .info')
+      $info: $('.main-inner>.player .info'),
+      $lyrics: $('.main-inner>.player .lyrics')
     },
     templates: {
       $background(url) {
@@ -104,6 +100,9 @@
       },
       $info(name, singer) {
         return $(`<span>${name} - <span class="singer">${singer}</span></span>`)
+      },
+      $lyric(time, text) {
+        return $(`<p class="row" data-time="${time}">${text}</p>`)
       }
     },
     renders: {
@@ -125,10 +124,18 @@
         this.elems.$audio.on('ended', () => {
           this.controller.ended()
         })
+        this.elems.$audio.on('timeupdate', e => {
+          this.controller.timeupdate(e.target.currentTime)
+        })
         this.elems.$root.append(this.elems.$audio)
       },
       info(name, singer) {
         this.elems.$info.append(this.templates.$info(name, singer))
+      },
+      lyrics(lyrics) {
+        lyrics.forEach(lyric => {
+          this.elems.$lyrics.append(this.templates.$lyric(lyric.time, lyric.text))
+        })
       }
     },
     actions: {
@@ -136,7 +143,7 @@
         document.title = title
       },
       updatePlayerSize() {
-        this.elems.$player.height(this.elems.$scoller.parent().height())
+        this.elems.$player.height(this.elems.$scoller.parent().height() + 1)
       },
       play() {
         this.elems.$audio.trigger('play')
@@ -154,14 +161,23 @@
       },
       ended() {
         this.elems.$disc.removeClass('play')
+      },
+      toLyrics(time) {
+        this.elems.$lyrics.find('.active').removeClass('active')
+        let currentRow
+        if (time === 0) {
+          currentRow = this.elems.$lyrics.children().first().addClass('active')
+        } else {
+          currentRow = this.elems.$lyrics.find(`[data-time="${time}"]`).addClass('active')
+        }
+        let offsetY = -currentRow.offset().top + currentRow.parent().offset().top
+        this.elems.$lyrics.css('transform', `translateY(${offsetY}px)`)
       }
     },
     bindEvents() {
-      if (!utils.isMobile()) {
-        $(window).on('resize', (e) => {
-          this.updatePlayerSize()
-        })
-      }
+      window.addEventListener('resize', (e) => {
+        this.updatePlayerSize()
+      })
       this.elems.$player.on('click', () => {
         this.controller.toggleState()
       })

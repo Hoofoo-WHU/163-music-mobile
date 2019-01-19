@@ -123,7 +123,8 @@ audio {
   padding-right: 10px;
   box-sizing: content-box;
   flex-grow: 1;
-  overflow-y: auto;
+  overflow-x: hidden;
+  overflow-y: scroll;
 }
 
 .content-wrapper .main-inner::-webkit-scrollbar {
@@ -239,14 +240,37 @@ audio {
   color: #fefefe;
   margin-top: 15px;
   line-height: 1;
-  font-size: 15px;
+  font-size: 18px;
   text-align: center;
   padding: 0 35px;
 }
 
 .main-inner>.player .info .singer {
-  font-size: 13px;
+  font-size: 16px;
   color: hsla(0, 0%, 100%, 0.6)
+}
+
+.main-inner>.player .lyrics-wrapper {
+  position: relative;
+  margin-top: 14px;
+  text-align: center;
+  font-size: 16px;
+  line-height: 32px;
+  height: 64px;
+  overflow: hidden;
+}
+
+.main-inner>.player .lyrics {
+  transition: transform 0.3s ease-out;
+}
+
+.main-inner>.player .lyrics .row {
+  transition: color .3s;
+  color: hsla(0, 0%, 100%, 0.6)
+}
+
+.main-inner>.player .lyrics .row.active {
+  color: #fff;
 }
 
 .content-wrapper>footer {
