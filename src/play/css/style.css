@@ -146,6 +146,7 @@ audio {
 
 .content-wrapper .main-inner>.player {
   min-height: 341px;
+  position: relative;
   overflow: hidden;
 }
 
@@ -371,8 +372,11 @@ audio {
 .main-inner .more {
   visibility: hidden;
   height: 36px;
-  padding-top: 10px;
+  padding-top: 18px;
   pointer-events: none;
+  position: absolute;
+  width: 100%;
+  bottom: 0;
   cursor: pointer;
 }
 
@@ -420,9 +424,7 @@ audio {
 
 .content-wrapper>footer {
   flex-shrink: 0;
-  margin-bottom: 10px;
-  margin-left: 10px;
-  margin-right: 10px;
+  margin: 10px;
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-column-gap: 10px;

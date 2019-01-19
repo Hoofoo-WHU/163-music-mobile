@@ -165,7 +165,7 @@
         document.title = title
       },
       updatePlayerSize() {
-        this.elems.$player.height(this.elems.$scoller.parent().height() - 35)
+        this.elems.$player.height(this.elems.$scoller.parent().height() + 1)
       },
       play() {
         this.elems.$audio.trigger('play')
@@ -219,6 +219,10 @@
         } else {
           this.showArrow()
         }
+      })
+      this.elems.$arrow.on('click', (e) => {
+        e.stopPropagation()
+        this.elems.$scoller.animate({ scrollTop: this.elems.$scoller.parent().height() }, 400)
       })
     },
     beforeMount() {
