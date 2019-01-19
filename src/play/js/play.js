@@ -101,7 +101,8 @@
       $audio: null,
       $loading: $('#app>.loading'),
       $info: $('.main-inner>.player .info'),
-      $lyrics: $('.main-inner>.player .lyrics')
+      $lyrics: $('.main-inner>.player .lyrics'),
+      $arrow: $('.main-inner .more')
     },
     templates: {
       $background(url) {
@@ -164,7 +165,7 @@
         document.title = title
       },
       updatePlayerSize() {
-        this.elems.$player.height(this.elems.$scoller.parent().height() + 1)
+        this.elems.$player.height(this.elems.$scoller.parent().height() - 35)
       },
       play() {
         this.elems.$audio.trigger('play')
@@ -197,6 +198,12 @@
         }
         let offsetY = -currentRow.offset().top + currentRow.parent().offset().top
         this.elems.$lyrics.css('transform', `translateY(${offsetY}px)`)
+      },
+      showArrow() {
+        this.elems.$arrow.addClass('active')
+      },
+      hideArrow() {
+        this.elems.$arrow.removeClass('active')
       }
     },
     bindEvents() {
@@ -205,6 +212,13 @@
       })
       this.elems.$player.on('click', () => {
         this.controller.toggleState()
+      })
+      this.elems.$scoller.on('scroll', (e) => {
+        if (e.currentTarget.scrollTop > 35) {
+          this.hideArrow()
+        } else {
+          this.showArrow()
+        }
       })
     },
     beforeMount() {

@@ -316,6 +316,12 @@ audio {
   padding: 0 35px;
 }
 
+@media screen and (max-height: 567px) {
+  .main-inner>.player .info {
+    margin-top: 15px;
+  }
+}
+
 .main-inner>.player .info .singer {
   font-size: 13px;
   color: hsla(0, 0%, 100%, 0.6)
@@ -359,6 +365,56 @@ audio {
   }
   .main-inner>.player .lyrics .row {
     margin-bottom: 8px;
+  }
+}
+
+.main-inner .more {
+  visibility: hidden;
+  height: 36px;
+  padding-top: 10px;
+  pointer-events: none;
+  cursor: pointer;
+}
+
+.main-inner .more .icon.arrow {
+  display: block;
+  margin: 0 auto;
+  height: 12px;
+  width: 17px;
+  background: url(../../assets/up_arrow.png) no-repeat;
+  background-size: 17px auto;
+  animation: arrow 1.2s infinite step-start;
+}
+
+.main-inner .more.active {
+  visibility: visible;
+  pointer-events: unset;
+}
+
+@keyframes arrow {
+  0% {
+    background-position: 0 0;
+  }
+  15% {
+    background-position: 0 -12px;
+  }
+  30% {
+    background-position: 0 -24px;
+  }
+  45% {
+    background-position: 0 -36px;
+  }
+  60% {
+    background-position: 0 -48px;
+  }
+  75% {
+    background-position: 0 -60px;
+  }
+  90% {
+    background-position: 0 -72px;
+  }
+  100% {
+    background-position: 0 -84px;
   }
 }
 
