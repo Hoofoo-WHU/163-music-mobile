@@ -7,16 +7,28 @@
       'X-LC-Key': 'lzNwurWpUff2VlT037gR3orG'
     }
   })
-  let getMusicList = async function ({ k, order = '-' } = { order: '-' }) {
-    let result = await axios.get(`cloudQuery?cql=select * from Songs ${k !== undefined ? `limit 0, ${k}` : ''} order by ${order}createdAt`)
+  const axiosLE = window.axios.create({
+    baseURL: 'https://163-mobile-music.leanapp.cn'
+  })
+  let getNewMusicList = async function (k) {
+    let result = await axios.get(`cloudQuery?cql=select * from Songs ${k !== undefined ? `limit 0, ${k}` : ''} order by -createdAt`)
+    return result.data.results
+  }
+  // let getMusic = async function (objectId) {
+  //   let { data } = await axios.get(`classes/Songs/${objectId}`)
+  //   return data
+  // }
+  let getHotMusicList = async function (k) {
+    let result = await axios.get(`cloudQuery?cql=select * from Songs ${k !== undefined ? `limit 0, ${k}` : ''} order by -hot`)
     return result.data.results
   }
   let getMusic = async function (objectId) {
-    let { data } = await axios.get(`classes/Songs/${objectId}`)
+    let { data } = await axiosLE.get(`songs?id=${objectId}`)
     return data
   }
   window.app.http = {
-    getMusicList,
+    getHotMusicList,
+    getNewMusicList,
     getMusic
   }
 }

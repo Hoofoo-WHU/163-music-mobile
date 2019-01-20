@@ -11,7 +11,7 @@
     },
     methods: {
       async fetchSongs() {
-        this.data.songs = await http.getMusicList({ k: 3 })
+        this.data.songs = await http.getHotMusicList(3)
         return this.data.songs
       }
     }
