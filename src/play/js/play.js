@@ -191,7 +191,7 @@
       },
       toLyrics(time) {
         let curr = this.elems.$lyrics.find(`[data-time="${time}"]`)
-        if (!curr.hasClass('active')) {
+        if (this.elems.$lyrics.children().length > 0 && !curr.hasClass('active')) {
           this.elems.$lyrics.find('.active').removeClass('active')
           let currentRow
           if (time === 0) {

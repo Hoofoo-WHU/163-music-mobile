@@ -77,6 +77,7 @@
   }
   let Lrc = class {
     constructor(lrctxt) {
+      lrctxt = lrctxt || ''
       this.lrctxt = lrctxt.replace()
       this.reg = /\[([\d:\.]+)\](.+)/g
     }
