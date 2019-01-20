@@ -190,15 +190,18 @@
         this.elems.$disc.removeClass('play')
       },
       toLyrics(time) {
-        this.elems.$lyrics.find('.active').removeClass('active')
-        let currentRow
-        if (time === 0) {
-          currentRow = this.elems.$lyrics.children().first().addClass('active')
-        } else {
-          currentRow = this.elems.$lyrics.find(`[data-time="${time}"]`).addClass('active')
+        let curr = this.elems.$lyrics.find(`[data-time="${time}"]`)
+        if (!curr.hasClass('active')) {
+          this.elems.$lyrics.find('.active').removeClass('active')
+          let currentRow
+          if (time === 0) {
+            currentRow = this.elems.$lyrics.children().first().addClass('active')
+          } else {
+            currentRow = curr.addClass('active')
+          }
+          let offsetY = -currentRow.offset().top + currentRow.parent().offset().top
+          this.elems.$lyrics.css('transform', `translateY(${offsetY}px)`)
         }
-        let offsetY = -currentRow.offset().top + currentRow.parent().offset().top
-        this.elems.$lyrics.css('transform', `translateY(${offsetY}px)`)
       },
       showArrow() {
         this.elems.$arrow.addClass('active')

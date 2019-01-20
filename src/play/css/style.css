@@ -189,6 +189,7 @@ audio {
   left: 0;
   border-radius: 50%;
   background: url(../../assets/disc_light.png) center/contain no-repeat;
+  will-change: transform;
   animation: rotate infinite linear 20s;
   animation-play-state: paused;
 }
@@ -339,6 +340,7 @@ audio {
 }
 
 .main-inner>.player .lyrics {
+  will-change: transform;
   transition: transform 0.3s ease-out;
   padding: 0 35px;
 }
@@ -387,6 +389,7 @@ audio {
   width: 17px;
   background: url(../../assets/up_arrow.png) no-repeat;
   background-size: 17px auto;
+  will-change: background-position;
   animation: arrow 1.2s infinite step-start;
 }
 
