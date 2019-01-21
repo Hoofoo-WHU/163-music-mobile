@@ -41,6 +41,7 @@ a {
 
 html {
   height: 100%;
+  touch-action: manipulation;
 }
 
 body {
@@ -138,6 +139,7 @@ body {
   flex-grow: 1;
   background-color: #f8f8f8;
   padding-bottom: 53px;
+  min-width: 0;
 }
 
 #app>header {
@@ -154,12 +156,10 @@ body {
   left: -20px;
   top: -20px;
   background-size: cover;
-  background-origin: center;
   background-position: center;
-  background: #fff;
+  background-color: #fff;
   filter: blur(20px) brightness(0.73);
   transform: scale3d(1.2, 1.2, 1);
-  background-image: url(https://p2.music.126.net/CTy2qORJDj8ZBBnRvF08vQ==/109951163792739059.webp?imageView&thumbnail=252x0&quality=75&tostatic=0&type=webp);
 }
 
 #app>header main {

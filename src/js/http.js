@@ -26,9 +26,16 @@
     let { data } = await axiosLE.get(`songs?id=${objectId}`)
     return data
   }
+  let getList = async function (objectId) {
+    let res1 = await axios.get(`classes/List/${objectId}`)
+    let res2 = await axios.get(`cloudQuery?cql=select include song from SongListMap where list=pointer('List','${objectId}')`)
+    res1.data.songs = res2.data.results.map(val => val.song)
+    return res1.data
+  }
   window.app.http = {
     getHotMusicList,
     getNewMusicList,
-    getMusic
+    getMusic,
+    getList
   }
 }
