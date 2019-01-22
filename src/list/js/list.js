@@ -30,6 +30,7 @@
           this.view.renders.header(list)
           this.view.renders.intro(list)
           this.view.renders.songs(list.songs)
+          this.view.loaded()
           console.log(list.songs)
         } catch (e) {
           alert('加载歌单失败')
@@ -50,7 +51,8 @@
       $root: $('#app'),
       $header: $('#app>header'),
       $intro: $('#app>.intro'),
-      $list: $('#app>.list')
+      $list: $('#app>.list'),
+      $loading: $('#app>.loading')
     },
     templates: {
       $songItem({ objectId, rank, name, sq, singer, album }) {
@@ -104,6 +106,12 @@
       },
       deactiveIntro() {
         this.elems.$intro.removeClass('active')
+      },
+      loading() {
+        this.elems.$loading.addClass('active')
+      },
+      loaded() {
+        this.elems.$loading.removeClass('active')
       }
     },
     bindEvents() {
