@@ -335,9 +335,9 @@ audio {
   position: relative;
   margin-top: 14px;
   text-align: center;
-  font-size: 13px;
-  line-height: 1.5;
-  height: 44px;
+  font-size: 14px;
+  line-height: 21px;
+  height: 47px;
   overflow: hidden;
 }
 
@@ -365,6 +365,7 @@ audio {
     font-size: 16px;
   }
   .main-inner>.player .lyrics-wrapper {
+    line-height: 24px;
     font-size: 16px;
     height: 56px;
   }
