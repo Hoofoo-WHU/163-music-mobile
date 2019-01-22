@@ -36,10 +36,15 @@
     let { data } = await axiosLE.get(`list?id=${objectId}`)
     return data
   }
+  let getLists = async function (k) {
+    let result = await axios.get(`cloudQuery?cql=select * from List ${k !== undefined ? `limit 0, ${k}` : ''} order by -hot`)
+    return result.data.results
+  }
   window.app.http = {
     getHotMusicList,
     getNewMusicList,
     getMusic,
-    getList
+    getList,
+    getLists
   }
 }
