@@ -4,6 +4,7 @@
   const Model = window.utils.Model
   const View = window.utils.View
   const Controller = window.utils.Controller
+  const NumberFormatter = window.utils.NumberFormatter
   let urlParams = new URLParams(window.location)
   let model = new Model({
     data: {
@@ -76,7 +77,7 @@
         this.elems.$header.find('.background').css('background-image', `url(//${cover})`)
         this.elems.$header.find('>main>figure').prepend($(`<img src="//${cover}">`))
         this.elems.$header.find('.list-icon').text(type)
-        this.elems.$header.find('.number').text(hot)
+        this.elems.$header.find('.number').text(new NumberFormatter(hot).unit())
         this.elems.$header.find('.title').text(title)
         this.elems.$header.find('.author .name').text(author)
       },

@@ -57,6 +57,20 @@
       }
     }
   }
+  class NumberFormatter {
+    constructor(number) {
+      this.number = number;
+    }
+    unit() {
+      if (this.number > 99999999) {
+        return (Math.floor(this.number / 10000000) / 10).toString() + "亿"
+      }
+      if (this.number > 9999) {
+        return (Math.floor(this.number / 1000) / 10).toString() + "万";
+      }
+      return this.number
+    }
+  }
 
   let URLParams = class {
     constructor(location) {
@@ -68,6 +82,7 @@
       }
     }
   }
+
   function isMobile() {
     if (!!window.navigator.userAgent.match(/AppleWebKit.*Mobile.*/) && !!window.navigator.userAgent.match(/AppleWebKit/)) {
       return true
@@ -116,6 +131,7 @@
     URLParams,
     Lrc,
     isMobile,
-    debounce
+    debounce,
+    NumberFormatter
   }
 }
