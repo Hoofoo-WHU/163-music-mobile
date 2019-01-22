@@ -175,6 +175,7 @@ body {
   grid-area: cover;
   width: 114px;
   height: 114px;
+  overflow: hidden;
   position: relative;
 }
 
