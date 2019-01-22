@@ -54,7 +54,7 @@
     templates: {
       $songItem({ objectId, rank, name, sq, singer, album }) {
         return $(`
-          <a href="/play?id=${objectId}" class="song-item">
+          <a href="/src/play?id=${objectId}" class="song-item">
             ${rank === undefined ? '' : `<div class="rank">${rank}</div>`}
             <main class="boder-bottom-1px light">
               <div class="info">
