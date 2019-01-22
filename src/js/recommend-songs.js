@@ -31,7 +31,7 @@
     templates: {
       $songList({ objectId, cover, title, hot }) {
         return $(`
-        <a class="song-list" href="/src/list?id=${objectId}">
+        <a class="song-list" href="./list?id=${objectId}">
           <figure>
             <img src="//${cover}">
             <i class="number">${hot}</i>
