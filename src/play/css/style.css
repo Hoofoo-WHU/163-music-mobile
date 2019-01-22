@@ -348,6 +348,7 @@ audio {
 }
 
 .main-inner>.player .lyrics .row {
+  max-height: 47px;
   margin-bottom: 5px;
   transition: color .3s;
   color: hsla(0, 0%, 100%, 0.6)
@@ -370,6 +371,7 @@ audio {
     height: 56px;
   }
   .main-inner>.player .lyrics .row {
+    max-height: 56px;
     margin-bottom: 8px;
   }
 }

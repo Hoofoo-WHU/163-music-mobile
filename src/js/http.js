@@ -40,11 +40,16 @@
     let result = await axios.get(`cloudQuery?cql=select * from List ${k !== undefined ? `limit 0, ${k}` : ''} order by -hot`)
     return result.data.results
   }
+  let getSongMore = async function (objectId, k = 10) {
+    let { data } = await axiosLE.get(`/song/more?id=${objectId}&limit=${k}`)
+    return data
+  }
   window.app.http = {
     getHotMusicList,
     getNewMusicList,
     getMusic,
     getList,
-    getLists
+    getLists,
+    getSongMore
   }
 }
