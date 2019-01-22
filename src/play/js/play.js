@@ -228,6 +228,9 @@
         e.stopPropagation()
         this.elems.$scoller.animate({ scrollTop: this.elems.$scoller.parent().height() }, 400)
       })
+      $('.openApp').on('click', () => {
+        alert('暂不支持跳转')
+      })
     },
     beforeMount() {
       this.updatePlayerSize()

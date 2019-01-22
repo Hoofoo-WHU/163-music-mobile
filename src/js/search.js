@@ -39,7 +39,7 @@
         localStorage.setItem('search_history', JSON.stringify(this.data.historys))
       },
       search(val) {
-        alert('没有实现搜索接口')
+        alert('没有搜索接口，暂不支持搜索')
         this.addHistory(val)
       }
     }

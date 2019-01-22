@@ -120,6 +120,10 @@
           this.controller.toggleIntro()
         }
       })
+      console.log($('.openApp'))
+      $('.openApp').on('click', () => {
+        alert('暂不支持跳转')
+      })
     },
     beforeMount() {
       this.controller.loadList(urlParams.id)

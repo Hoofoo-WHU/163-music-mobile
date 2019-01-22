@@ -412,6 +412,7 @@ body {
 }
 
 #app>footer .button {
+  position: relative;
   cursor: pointer;
   text-align: center;
   line-height: 40px;

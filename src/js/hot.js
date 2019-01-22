@@ -75,7 +75,7 @@
         }
       })
       this.elems.$root.on('click', 'footer', () => {
-        alert('练手项目不能跳转到APP！')
+        alert('暂不支持跳转')
       })
     }
   })
