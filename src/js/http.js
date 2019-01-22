@@ -11,7 +11,7 @@
     baseURL: 'https://163-mobile-music.leanapp.cn'
   })
   let getNewMusicList = async function (k) {
-    let result = await axios.get(`cloudQuery?cql=select * from Songs ${k !== undefined ? `limit 0, ${k}` : ''} order by -createdAt`)
+    let result = await axios.get(`cloudQuery?cql=select singer,name,objectId,album from Songs ${k !== undefined ? `limit 0, ${k}` : ''} order by -createdAt`)
     return result.data.results
   }
   // let getMusic = async function (objectId) {
@@ -19,7 +19,7 @@
   //   return data
   // }
   let getHotMusicList = async function (k) {
-    let result = await axios.get(`cloudQuery?cql=select * from Songs ${k !== undefined ? `limit 0, ${k}` : ''} order by -hot`)
+    let result = await axios.get(`cloudQuery?cql=select singer,name,objectId,album from Songs ${k !== undefined ? `limit 0, ${k}` : ''} order by -hot`)
     return result.data.results
   }
   let getMusic = async function (objectId) {
