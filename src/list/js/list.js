@@ -81,6 +81,7 @@
     },
     renders: {
       header({ title, cover, type, author, hot }) {
+        document.title = `${title} - ${type} - 网易云音乐`
         this.elems.$header.find('.background').css('background-image', `url(//${cover})`)
         this.elems.$header.find('>main>figure').prepend($(`<img src="//${cover}">`))
         this.elems.$header.find('.list-icon').text(type)
