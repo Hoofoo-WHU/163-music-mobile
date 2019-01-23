@@ -11,7 +11,12 @@
     },
     methods: {
       async fetchSongs() {
-        this.data.songs = await http.getHotMusicList(3)
+        this.data.songs = await http.getHotMusicList(16)
+        this.data.songs.forEach(val => {
+          if (parseInt(val.size) > 5) {
+            val.sq = true
+          }
+        })
         return this.data.songs
       }
     }
@@ -45,9 +50,6 @@
     renders: {
       songs(songs) {
         songs.forEach((song, index) => {
-          if (Math.random() >= 0.5) {
-            song.sq = true
-          }
           song.rank = (index + 1).toString().padStart(2, 0)
           this.elems.$root.append(this.templates.$song(song))
         })

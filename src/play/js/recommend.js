@@ -12,6 +12,11 @@
     methods: {
       async fetchSongs(id) {
         this.data.songs = await http.getSongMore(id)
+        this.data.songs.forEach(val => {
+          if (parseInt(val.size) > 5) {
+            val.sq = true
+          }
+        })
         return this.data.songs
       }
     }

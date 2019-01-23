@@ -335,9 +335,9 @@ audio {
   position: relative;
   margin-top: 14px;
   text-align: center;
-  font-size: 14px;
-  line-height: 21px;
-  height: 47px;
+  font-size: 13px;
+  line-height: 23px;
+  height: 46px;
   overflow: hidden;
 }
 
@@ -348,8 +348,6 @@ audio {
 }
 
 .main-inner>.player .lyrics .row {
-  max-height: 47px;
-  margin-bottom: 5px;
   transition: color .3s;
   color: hsla(0, 0%, 100%, 0.6)
 }
@@ -366,13 +364,9 @@ audio {
     font-size: 16px;
   }
   .main-inner>.player .lyrics-wrapper {
-    line-height: 24px;
+    line-height: 28px;
     font-size: 16px;
     height: 56px;
-  }
-  .main-inner>.player .lyrics .row {
-    max-height: 56px;
-    margin-bottom: 8px;
   }
 }
 

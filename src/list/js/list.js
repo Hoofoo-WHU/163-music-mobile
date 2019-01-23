@@ -13,6 +13,11 @@
     methods: {
       async fetchList(id) {
         this.data.list = await http.getList(id)
+        this.data.list.songs.forEach(val => {
+          if (parseInt(val.size) > 5) {
+            val.sq = true
+          }
+        })
         return this.data.list
       },
       toggleIntro() {

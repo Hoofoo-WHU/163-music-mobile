@@ -12,6 +12,11 @@
     methods: {
       async fetchSongs() {
         this.data.songs = await http.getNewMusicList(10)
+        this.data.songs.forEach(val => {
+          if (parseInt(val.size) > 5) {
+            val.sq = true
+          }
+        })
         return this.data.songs
       }
     }
@@ -43,9 +48,6 @@
     renders: {
       songs(songs) {
         songs.forEach(song => {
-          if (Math.random() >= 0.5) {
-            song.sq = true
-          }
           this.elems.$root.append(this.templates.$song(song))
         })
       }
