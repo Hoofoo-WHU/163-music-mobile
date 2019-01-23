@@ -1,8 +1,11 @@
 # 163-music-mobile
 A toy 163 music player
 
-[demo](https://hoofoo-whu.github.io/163-music-mobile/src)
+## 在线预览
+[GitHub](https://hoofoo-whu.github.io/163-music-mobile/src)
+[腾讯云(快)](https://163-music-mobile-app-1256107964.cos-website.ap-beijing.myqcloud.com)
 
+## Todo
 ToDo:
 - [x] 主页
   - [x] 导航栏
