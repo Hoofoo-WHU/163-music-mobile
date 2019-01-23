@@ -75,7 +75,7 @@
         }
       })
       this.elems.$root.on('click', 'footer', () => {
-        alert('暂不支持跳转')
+        window.location = 'orpheus://'
       })
     }
   })

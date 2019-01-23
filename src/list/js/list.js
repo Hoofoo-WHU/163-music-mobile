@@ -122,7 +122,7 @@
       })
       console.log($('.openApp'))
       $('.openApp').on('click', () => {
-        alert('暂不支持跳转')
+        window.location = 'orpheus://'
       })
     },
     beforeMount() {
